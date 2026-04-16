@@ -1,0 +1,189 @@
+﻿@page "/books"
+@inject IBookService BookService
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<PageTitle>Book Management — Library Shop</PageTitle>
+
+<MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-5">
+    <MudText Typo="Typo.h5" Style="color:#87CEEB;font-weight:700;">
+        <MudIcon Icon="@Icons.Material.Filled.MenuBook" Class="mr-2" />Book Management
+    </MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Secondary"
+               StartIcon="@Icons.Material.Filled.Add"
+               OnClick="OpenAdd" Style="border-radius:8px;font-weight:600;color:#1A3A4A;">
+        Add Book
+    </MudButton>
+</MudStack>
+
+<MudPaper Elevation="2" Class="rounded-xl overflow-hidden">
+    <MudTable T="Book" @ref="_table" ServerData="LoadBooks" Hover Dense Striped
+              Loading="_loading" LoadingProgressColor="Color.Secondary"
+              SortLabel="Sort By" Breakpoint="Breakpoint.Sm">
+        <ToolBarContent>
+            <MudTextField @bind-Value="_search" Placeholder="Search ID, title or author..."
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+                          AdornmentColor="Color.Secondary" Variant="Variant.Outlined"
+                          Immediate="true" DebounceInterval="300"
+                          Clearable Style="max-width:360px;" Class="mt-0"
+                          OnKeyUp="OnSearchKeyUp"
+                          OnClearButtonClick="ClearSearch" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Id">ID</MudTableSortLabel></MudTh>
+            <MudTh Style="width:52px;">Cover</MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Title">Title</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Author">Author</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Price">Price</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Stock">Stock</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center;">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID">@context.Id</MudTd>
+            <MudTd DataLabel="Cover">
+                @if (!string.IsNullOrEmpty(context.CoverImage))
+                {
+                    <MudAvatar Style="width:34px;height:34px;border-radius:4px;">
+                        <MudImage Src="@context.CoverImage" Style="width:100%;height:100%;object-fit:cover;" />
+                    </MudAvatar>
+                }
+                else
+                {
+                    <MudAvatar Style="background:#D6EFFA;color:#1A5C7A;width:34px;height:34px;border-radius:4px;font-size:.8rem;">
+                        @(context.Title.Length > 0 ? context.Title[..1].ToUpper() : "?")
+                    </MudAvatar>
+                }
+            </MudTd>
+            <MudTd DataLabel="Title"><MudText Style="font-weight:500;">@context.Title</MudText></MudTd>
+            <MudTd DataLabel="Author">@context.Author</MudTd>
+            <MudTd DataLabel="Price">
+                <MudText Style="color:#FFA07A;font-weight:600;">&#8369;@context.Price.ToString("F2")</MudText>
+            </MudTd>
+            <MudTd DataLabel="Stock">
+                <MudChip T="string" Size="Size.Small"
+                         Style="@(context.Stock < 5 ? "background:#FFEBEE;color:#C62828;" : "background:#E8F5E9;color:#2E6B2E;")">
+                    @context.Stock
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:center;white-space:nowrap;">
+                <MudIconButton Icon="@Icons.Material.Filled.Visibility"
+                               Color="Color.Secondary" Size="Size.Small"
+                               OnClick="@(() => OpenView(context))" Title="View" />
+                <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                               Color="Color.Primary" Size="Size.Small"
+                               OnClick="@(() => OpenEdit(context))" Title="Edit" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                               Color="Color.Error" Size="Size.Small"
+                               OnClick="@(() => OpenDelete(context))" Title="Delete" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent><MudTablePager PageSizeOptions="new int[] { 10, 25, 50 }" /></PagerContent>
+        <NoRecordsContent>
+            <MudStack AlignItems="AlignItems.Center" Class="pa-6">
+                <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="font-size:3rem;color:#D6EFFA;" />
+                <MudText Color="Color.Secondary">No books found.</MudText>
+            </MudStack>
+        </NoRecordsContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private MudTable<Book>? _table;
+    private List<Book> _allBooks = [];
+    private string _search = string.Empty;
+    private bool _loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _loading = true;
+        try { _allBooks = (await BookService.GetBooksAsync()).ToList(); }
+        catch (Exception ex) { Snackbar.Add($"Failed to load: {ex.Message}", Severity.Error); }
+        _loading = false;
+    }
+
+    private Task<TableData<Book>> LoadBooks(TableState state, CancellationToken ct)
+    {
+        var query = _allBooks.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(_search))
+        {
+            var s = _search.Trim().ToLower();
+            query = query.Where(b =>
+                b.Id.ToString().Contains(s) ||
+                b.Title.ToLower().Contains(s) ||
+                b.Author.ToLower().Contains(s));
+        }
+
+        query = state.SortLabel switch
+        {
+            "b => b.Id" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Id) : query.OrderBy(b => b.Id),
+            "b => b.Title" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Title) : query.OrderBy(b => b.Title),
+            "b => b.Author" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Author) : query.OrderBy(b => b.Author),
+            "b => b.Price" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Price) : query.OrderBy(b => b.Price),
+            "b => b.Stock" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Stock) : query.OrderBy(b => b.Stock),
+            _ => query.OrderBy(b => b.Id)
+        };
+
+        var total = query.Count();
+        var items = query.Skip(state.Page * state.PageSize).Take(state.PageSize).ToList();
+        return Task.FromResult(new TableData<Book> { Items = items, TotalItems = total });
+    }
+
+    private async Task OnSearchKeyUp(KeyboardEventArgs e)
+    {
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task ClearSearch()
+    {
+        _search = string.Empty;
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task Reload()
+    {
+        _loading = true;
+        try { _allBooks = (await BookService.GetBooksAsync()).ToList(); }
+        catch (Exception ex) { Snackbar.Add($"Failed to load: {ex.Message}", Severity.Error); }
+        _loading = false;
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task OpenView(Book book)
+    {
+        var p = new DialogParameters<BookViewDialog> { { x => x.Book, book } };
+        var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, FullWidth = true };
+        await DialogService.ShowAsync<BookViewDialog>("Book Details", p, opts);
+    }
+
+    private async Task OpenAdd()
+    {
+        var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true };
+        var dlg = await DialogService.ShowAsync<BookFormDialog>("Add Book", opts);
+        var res = await dlg.Result;
+        if (res is { Canceled: false }) { Snackbar.Add("Book added!", Severity.Success); await Reload(); }
+    }
+
+    private async Task OpenEdit(Book book)
+    {
+        var p = new DialogParameters<BookFormDialog> { { x => x.ExistingBook, book } };
+        var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true };
+        var dlg = await DialogService.ShowAsync<BookFormDialog>("Edit Book", p, opts);
+        var res = await dlg.Result;
+        if (res is { Canceled: false }) { Snackbar.Add("Book updated!", Severity.Success); await Reload(); }
+    }
+
+    private async Task OpenDelete(Book book)
+    {
+        var p = new DialogParameters<ConfirmDialog>
+                   { { x => x.Message, $"Do you want to delete \"{book.Title}\"?" } };
+        var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+        var dlg = await DialogService.ShowAsync<ConfirmDialog>("Confirm Delete", p, opts);
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            try { await BookService.DeleteBookAsync(book.Id); Snackbar.Add("Book deleted.", Severity.Info); await Reload(); }
+            catch (Exception ex) { Snackbar.Add($"Error: {ex.Message}", Severity.Error); }
+        }
+    }
+}

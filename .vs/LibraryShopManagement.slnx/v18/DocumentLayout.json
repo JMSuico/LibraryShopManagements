@@ -1,0 +1,1914 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\data\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\data\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\data\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\data\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\helpers\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\helpers\\customauthenticationstateprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\helpers\\authorizedcomponentbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\helpers\\authorizedcomponentbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\repositories\\interfaces\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\repositories\\interfaces\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\services\\implementations\\bookservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\services\\implementations\\bookservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\repositories\\implementations\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\repositories\\implementations\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\services\\interfaces\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\services\\interfaces\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\data\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\data\\enums\\userrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\bookmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\bookmanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13088.22327.rartemp\\NavMenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.17111.rartemp\\Index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.16095.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\shared\\confirmdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\shared\\confirmdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\shared\\bookviewdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\shared\\bookviewdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.5870.rartemp\\BookViewDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\shared\\userviewdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\shared\\userviewdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.1727.rartemp\\UserViewDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.47648.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\usermanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\usermanagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.45996.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.44132.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.42148.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\shared\\bookformdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\shared\\bookformdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.13891.rartemp\\BookFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.10503.rartemp\\Register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.7065.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\shared\\userformdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\shared\\userformdialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.403.rartemp\\UserFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.4144.rartemp\\BookFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.2753.rartemp\\UserFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.49158.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.47367.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.25536.rartemp\\UserFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.24360.rartemp\\ConfirmDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.22819.rartemp\\BookFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.20172.rartemp\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.17237.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.15819.rartemp\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.13455.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.12182.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.10445.rartemp\\_Imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.9280.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.6845.rartemp\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.3289.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.1668.rartemp\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.48896.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.43422.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.40688.rartemp\\_Imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.34714.rartemp\\ConfirmDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.31438.rartemp\\BookFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.26414.rartemp\\UserFormDialog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.29317.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.28374.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.48397.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.47212.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.46328.rartemp\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.45370.rartemp\\Login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.44481.rartemp\\Register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\logout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\logout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43599.rartemp\\Logout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43284.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\pages\\redirecttologinpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\pages\\redirecttologinpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.42244.rartemp\\RedirectToLoginPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.36262.rartemp\\RedirectToLoginPage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.35080.rartemp\\Home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.33931.rartemp\\Logout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.32885.rartemp\\Register.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.31382.rartemp\\Login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.30397.rartemp\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.29278.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.28150.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23895.rartemp\\NavMenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\layout\\emptylayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\layout\\emptylayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23121.rartemp\\EmptyLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.21960.rartemp\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.20007.rartemp\\_Imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.18531.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\components\\routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.16881.rartemp\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.15656.rartemp\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\features\\helpers\\redirecttologin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\features\\helpers\\redirecttologin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.8351.rartemp\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.5868.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.4458.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.2332.rartemp\\Dashboard.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43667.rartemp\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13784.5574.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.37212.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.16958.rartemp\\Login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.14958.rartemp\\Logout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.12725.rartemp\\EmptyLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.10095.rartemp\\MainLayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7867.rartemp\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7096.rartemp\\Routes.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.5865.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7380.17602.rartemp\\App.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.34594.rartemp\\BookManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.33053.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.23006.rartemp\\UserManagement.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\libraryshopmanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\libraryshopmanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260411090033_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260411090033_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260411113601_initialcreaete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260411113601_initialcreaete.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260412034547_initialcratosss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260412034547_initialcratosss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260411225122_initialcratoss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260411225122_initialcratoss.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260411223747_initialcratos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260411223747_initialcratos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|c:\\users\\provu\\desktop\\claude zip file\\project\\libraryshopmanagement\\libraryshopmanagement\\migrations\\20260412103329_initialcarlo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AACA1928-A13E-CCD2-0EE0-61A44A8CD364}|LibraryShopManagement\\LibraryShopManagement.csproj|solutionrelative:libraryshopmanagement\\migrations\\20260412103329_initialcarlo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Repositories\\Implementations\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Repositories\\Implementations\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:36:04.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:37:40.881Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:40:03.172Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Program.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Program.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Program.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Program.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAD4vwkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:29:12.251Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Models\\User.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Data\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Models\\User.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Data\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:33:41.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Book.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Data\\Models\\Book.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Models\\Book.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Data\\Models\\Book.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:33:33.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CustomAuthenticationStateProvider.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\CustomAuthenticationStateProvider.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Helpers\\CustomAuthenticationStateProvider.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\CustomAuthenticationStateProvider.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Helpers\\CustomAuthenticationStateProvider.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:35:01.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IBookRepository.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Interfaces\\IBookRepository.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Repositories\\Interfaces\\IBookRepository.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Interfaces\\IBookRepository.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Repositories\\Interfaces\\IBookRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:37:09.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\appsettings.json",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\appsettings.json",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\appsettings.json",
+              "RelativeToolTip": "LibraryShopManagement\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-04-11T08:32:11.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AuthorizedComponentBase.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\AuthorizedComponentBase.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Helpers\\AuthorizedComponentBase.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\AuthorizedComponentBase.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Helpers\\AuthorizedComponentBase.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA+wCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:53:44.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookServices.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Implementations\\BookServices.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Services\\Implementations\\BookServices.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Implementations\\BookServices.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Services\\Implementations\\BookServices.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:38:35.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Implementations\\BookRepository.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Repositories\\Implementations\\BookRepository.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Repositories\\Implementations\\BookRepository.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Repositories\\Implementations\\BookRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:35:40.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Implementations\\UserService.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Services\\Implementations\\UserService.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Implementations\\UserService.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Services\\Implementations\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:39:14.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IBookService.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Interfaces\\IBookService.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Services\\Interfaces\\IBookService.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Services\\Interfaces\\IBookService.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Services\\Interfaces\\IBookService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:39:45.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:32:37.965Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserRole.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Enums\\UserRole.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Data\\Enums\\UserRole.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Data\\Enums\\UserRole.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Data\\Enums\\UserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:34:16.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:46:47.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\BookManagement.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\BookManagement.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\BookManagement.razor",
+              "ViewState": "AgIAADkAAAAAAAAAAAAewEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T09:05:40.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Index.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Index.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Index.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:42:29.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13088.22327.rartemp\\NavMenu.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13088.22327.rartemp\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13088.22327.rartemp\\NavMenu.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13088.22327.rartemp\\NavMenu.razor",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAIwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:43:06.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 122,
+              "Title": "20260412103329_InitialCarlo.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260412103329_InitialCarlo.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260412103329_InitialCarlo.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260412103329_InitialCarlo.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260412103329_InitialCarlo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T10:33:29.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UserViewDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.1727.rartemp\\UserViewDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.1727.rartemp\\UserViewDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.1727.rartemp\\UserViewDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.1727.rartemp\\UserViewDialog.razor",
+              "ViewState": "AgIAADsAAAAAAAAAAAAUwF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:31:20.86Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.47648.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.47648.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.47648.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.47648.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAUwL0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:30:40.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.16095.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7988.16095.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.16095.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7988.16095.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:42:04.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.17111.rartemp\\Index.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7988.17111.rartemp\\Index.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7988.17111.rartemp\\Index.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7988.17111.rartemp\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:42:14.718Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.45996.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.45996.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.45996.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.45996.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAUwNMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:30:23.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ConfirmDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\ConfirmDialog.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Shared\\ConfirmDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\ConfirmDialog.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Shared\\ConfirmDialog.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:13:58.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BookViewDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\BookViewDialog.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Shared\\BookViewDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\BookViewDialog.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Shared\\BookViewDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:32:23.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T09:06:00.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "UserViewDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\UserViewDialog.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Shared\\UserViewDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\UserViewDialog.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Shared\\UserViewDialog.razor",
+              "ViewState": "AgIAADsAAAAAAAAAAAAUwF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:31:42.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BookViewDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.5870.rartemp\\BookViewDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.5870.rartemp\\BookViewDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.5870.rartemp\\BookViewDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.5870.rartemp\\BookViewDialog.razor",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAUwFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:32:02.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.44132.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.44132.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.44132.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.44132.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:30:04.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.42148.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.42148.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa25336.42148.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa25336.42148.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T10:29:45.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "BookFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\BookFormDialog.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Shared\\BookFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\BookFormDialog.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Shared\\BookFormDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:13:21.845Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "BookFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.13891.rartemp\\BookFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.13891.rartemp\\BookFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.13891.rartemp\\BookFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.13891.rartemp\\BookFormDialog.razor",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAcwIYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:45:02.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\UserManagement.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\UserManagement.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\UserManagement.razor",
+              "ViewState": "AgIAAK8AAAAAAAAAAAAUwNMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T09:06:19.624Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.7065.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.7065.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.7065.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.7065.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAIYAAAAAAAAAAAAgwJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:43:54.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "UserFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.403.rartemp\\UserFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.403.rartemp\\UserFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.403.rartemp\\UserFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.403.rartemp\\UserFormDialog.razor",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAcwK0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:42:47.625Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Dashboard.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Dashboard.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Dashboard.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T09:05:53.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 119,
+              "Title": "20260412034547_InitialCratosss.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260412034547_InitialCratosss.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260412034547_InitialCratosss.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260412034547_InitialCratosss.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260412034547_InitialCratosss.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-12T03:45:47.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.10503.rartemp\\Register.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.10503.rartemp\\Register.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22412.10503.rartemp\\Register.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22412.10503.rartemp\\Register.razor",
+              "ViewState": "AgIAALYAAAAAAAAAAAAcwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:44:28.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Register.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Register.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Register.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Register.razor",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAcwNEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:48:17.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UserFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\UserFormDialog.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Shared\\UserFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Shared\\UserFormDialog.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Shared\\UserFormDialog.razor",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAcwLQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:12:50.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.15819.rartemp\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.15819.rartemp\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.15819.rartemp\\Dashboard.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.15819.rartemp\\Dashboard.razor",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAuwKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:18:41.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.47367.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.47367.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.47367.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.47367.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAIwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:17:17.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.49158.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.49158.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.49158.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.49158.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAIwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:17:35.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "UserFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.2753.rartemp\\UserFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.2753.rartemp\\UserFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.2753.rartemp\\UserFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.2753.rartemp\\UserFormDialog.razor",
+              "ViewState": "AgIAAHkAAAAAAAAAAAAIwJMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:18:11.105Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "BookFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.4144.rartemp\\BookFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.4144.rartemp\\BookFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa9116.4144.rartemp\\BookFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa9116.4144.rartemp\\BookFormDialog.razor",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwIsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-12T03:18:25.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.17237.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.17237.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.17237.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.17237.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:18:55.943Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.20172.rartemp\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.20172.rartemp\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.20172.rartemp\\MainLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.20172.rartemp\\MainLayout.razor",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAuwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:19:25.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "BookFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.22819.rartemp\\BookFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.22819.rartemp\\BookFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.22819.rartemp\\BookFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.22819.rartemp\\BookFormDialog.razor",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAcwIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:19:51.777Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ConfirmDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.24360.rartemp\\ConfirmDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.24360.rartemp\\ConfirmDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.24360.rartemp\\ConfirmDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.24360.rartemp\\ConfirmDialog.razor",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:20:07.174Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "UserFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.25536.rartemp\\UserFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.25536.rartemp\\UserFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.25536.rartemp\\UserFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.25536.rartemp\\UserFormDialog.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAcwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:20:18.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAcwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:02:51.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.13455.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.13455.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.13455.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.13455.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAuwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:18:18.124Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.12182.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.12182.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.12182.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.12182.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAuwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:18:05.395Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.10445.rartemp\\_Imports.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.10445.rartemp\\_Imports.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.10445.rartemp\\_Imports.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.10445.rartemp\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:17:48.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.9280.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.9280.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.9280.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.9280.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:17:36.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.6845.rartemp\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.6845.rartemp\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.6845.rartemp\\MainLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.6845.rartemp\\MainLayout.razor",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAuwHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:17:12.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.3289.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.3289.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.3289.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.3289.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:16:36.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.1668.rartemp\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.1668.rartemp\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.1668.rartemp\\Dashboard.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.1668.rartemp\\Dashboard.razor",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAuwKIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:16:20.249Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.48896.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.48896.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa17972.48896.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa17972.48896.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAuwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:15:52.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.43422.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.43422.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.43422.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.43422.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAuwJ4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:14:57.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\App.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\App.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T09:02:58.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\_Imports.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\_Imports.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:32:32.269Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.40688.rartemp\\_Imports.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.40688.rartemp\\_Imports.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.40688.rartemp\\_Imports.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.40688.rartemp\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:14:30.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "ConfirmDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.34714.rartemp\\ConfirmDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.34714.rartemp\\ConfirmDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.34714.rartemp\\ConfirmDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.34714.rartemp\\ConfirmDialog.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:13:30.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "BookFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.31438.rartemp\\BookFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.31438.rartemp\\BookFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.31438.rartemp\\BookFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.31438.rartemp\\BookFormDialog.razor",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAuwIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:12:57.959Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "UserFormDialog.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.26414.rartemp\\UserFormDialog.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.26414.rartemp\\UserFormDialog.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa22260.26414.rartemp\\UserFormDialog.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa22260.26414.rartemp\\UserFormDialog.razor",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAuwJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T23:12:07.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.28374.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa15720.28374.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.28374.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa15720.28374.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:55:47.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 120,
+              "Title": "20260411225122_InitialCratoss.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411225122_InitialCratoss.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260411225122_InitialCratoss.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411225122_InitialCratoss.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260411225122_InitialCratoss.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:51:22.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.45370.rartemp\\Login.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.45370.rartemp\\Login.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.45370.rartemp\\Login.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.45370.rartemp\\Login.razor",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:50:17.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.44481.rartemp\\Register.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.44481.rartemp\\Register.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.44481.rartemp\\Register.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.44481.rartemp\\Register.razor",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAuwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:50:08.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "Logout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43599.rartemp\\Logout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43599.rartemp\\Logout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43599.rartemp\\Logout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43599.rartemp\\Logout.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:49:59.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.29317.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa15720.29317.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa15720.29317.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa15720.29317.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:55:56.74Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43284.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43284.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43284.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43284.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:49:56.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.48397.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.48397.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.48397.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.48397.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAuwAQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:50:47.544Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.46328.rartemp\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.46328.rartemp\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.46328.rartemp\\Dashboard.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.46328.rartemp\\Dashboard.razor",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAuwJ8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:50:26.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.47212.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.47212.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.47212.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.47212.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAANoAAAAAAAAAAAAuwPgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:50:35.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "RedirectToLoginPage.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\RedirectToLoginPage.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\RedirectToLoginPage.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\RedirectToLoginPage.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\RedirectToLoginPage.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:49:42.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "RedirectToLoginPage.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.42244.rartemp\\RedirectToLoginPage.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.42244.rartemp\\RedirectToLoginPage.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.42244.rartemp\\RedirectToLoginPage.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.42244.rartemp\\RedirectToLoginPage.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:49:46.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "RedirectToLoginPage.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.36262.rartemp\\RedirectToLoginPage.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.36262.rartemp\\RedirectToLoginPage.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.36262.rartemp\\RedirectToLoginPage.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.36262.rartemp\\RedirectToLoginPage.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:48:46.192Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.35080.rartemp\\Home.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.35080.rartemp\\Home.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.35080.rartemp\\Home.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.35080.rartemp\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:48:34.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Login.razor",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:04:00.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "Logout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.33931.rartemp\\Logout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.33931.rartemp\\Logout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.33931.rartemp\\Logout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.33931.rartemp\\Logout.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:48:22.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "Logout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Logout.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Pages\\Logout.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Pages\\Logout.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Pages\\Logout.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:03:40.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "Register.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.32885.rartemp\\Register.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.32885.rartemp\\Register.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.32885.rartemp\\Register.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.32885.rartemp\\Register.razor",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAuwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:48:12.45Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.31382.rartemp\\Login.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.31382.rartemp\\Login.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.31382.rartemp\\Login.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.31382.rartemp\\Login.razor",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAuwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:47:57.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.30397.rartemp\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.30397.rartemp\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.30397.rartemp\\Dashboard.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.30397.rartemp\\Dashboard.razor",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAuwJ8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:47:47.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.29278.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.29278.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.29278.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.29278.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAuwAQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:47:36.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.28150.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.28150.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.28150.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.28150.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAANoAAAAAAAAAAAAuwPgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:47:25.066Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23895.rartemp\\NavMenu.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.23895.rartemp\\NavMenu.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23895.rartemp\\NavMenu.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.23895.rartemp\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:46:42.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "EmptyLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23121.rartemp\\EmptyLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.23121.rartemp\\EmptyLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.23121.rartemp\\EmptyLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.23121.rartemp\\EmptyLayout.razor",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:46:34.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.21960.rartemp\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.21960.rartemp\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.21960.rartemp\\MainLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.21960.rartemp\\MainLayout.razor",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAuwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:46:23.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 92,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.20007.rartemp\\_Imports.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.20007.rartemp\\_Imports.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.20007.rartemp\\_Imports.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.20007.rartemp\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:46:03.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 93,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.18531.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.18531.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.18531.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.18531.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:45:48.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.16881.rartemp\\Routes.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.16881.rartemp\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.16881.rartemp\\Routes.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.16881.rartemp\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:45:32.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 96,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.15656.rartemp\\Routes.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.15656.rartemp\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.15656.rartemp\\Routes.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.15656.rartemp\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:45:20.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "EmptyLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\EmptyLayout.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Layout\\EmptyLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Layout\\EmptyLayout.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Layout\\EmptyLayout.razor",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:03:14.032Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 97,
+              "Title": "RedirectToLogin.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\RedirectToLogin.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Features\\Helpers\\RedirectToLogin.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Features\\Helpers\\RedirectToLogin.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Features\\Helpers\\RedirectToLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T08:35:22.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Routes.razor",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Components\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Components\\Routes.razor",
+              "RelativeToolTip": "LibraryShopManagement\\Components\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:44:36.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 121,
+              "Title": "20260411223747_InitialCratos.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411223747_InitialCratos.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260411223747_InitialCratos.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411223747_InitialCratos.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260411223747_InitialCratos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T22:37:48.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 101,
+              "Title": "Dashboard.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.2332.rartemp\\Dashboard.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.2332.rartemp\\Dashboard.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.2332.rartemp\\Dashboard.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.2332.rartemp\\Dashboard.razor",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAuwJ8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:26:26.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 100,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.4458.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.4458.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.4458.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.4458.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAuwAQBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:26:48.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 99,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.5868.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.5868.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.5868.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.5868.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAANoAAAAAAAAAAAAuwPgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:27:02.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 98,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.8351.rartemp\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.8351.rartemp\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.8351.rartemp\\MainLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.8351.rartemp\\MainLayout.razor",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAuwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:27:27.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 102,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43667.rartemp\\Routes.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43667.rartemp\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.43667.rartemp\\Routes.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.43667.rartemp\\Routes.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:25:00.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 104,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.37212.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.37212.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa20616.37212.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa20616.37212.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T22:23:55.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 103,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13784.5574.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13784.5574.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13784.5574.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13784.5574.rartemp\\App.razor",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:01:59.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 108,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.10095.rartemp\\MainLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.10095.rartemp\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.10095.rartemp\\MainLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.10095.rartemp\\MainLayout.razor",
+              "ViewState": "AgIAACkAAAAAAAAAAAAUwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:02:44.581Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 107,
+              "Title": "EmptyLayout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.12725.rartemp\\EmptyLayout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.12725.rartemp\\EmptyLayout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.12725.rartemp\\EmptyLayout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.12725.rartemp\\EmptyLayout.razor",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:03:10.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 106,
+              "Title": "Logout.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.14958.rartemp\\Logout.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.14958.rartemp\\Logout.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.14958.rartemp\\Logout.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.14958.rartemp\\Logout.razor",
+              "ViewState": "AgIAABQAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:03:33.182Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 105,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.16958.rartemp\\Login.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.16958.rartemp\\Login.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa27580.16958.rartemp\\Login.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa27580.16958.rartemp\\Login.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T12:03:53.213Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 111,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.5865.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.5865.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.5865.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.5865.rartemp\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:45:22.271Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 110,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7096.rartemp\\Routes.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.7096.rartemp\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7096.rartemp\\Routes.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.7096.rartemp\\Routes.razor",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:45:34.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 109,
+              "Title": "Routes.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7867.rartemp\\Routes.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.7867.rartemp\\Routes.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa13872.7867.rartemp\\Routes.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa13872.7867.rartemp\\Routes.razor",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAUwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:45:42.274Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 118,
+              "Title": "20260411113601_InitialCreaete.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411113601_InitialCreaete.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260411113601_InitialCreaete.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411113601_InitialCreaete.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260411113601_InitialCreaete.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T11:36:01.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 112,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7380.17602.rartemp\\App.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7380.17602.rartemp\\App.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa7380.17602.rartemp\\App.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa7380.17602.rartemp\\App.razor",
+              "ViewState": "AgIAABYAAAAAAAAAAAAAwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:38:59.671Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 114,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.33053.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.33053.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.33053.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.33053.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAUwNEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:33:14.189Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 113,
+              "Title": "BookManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.34594.rartemp\\BookManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.34594.rartemp\\BookManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.34594.rartemp\\BookManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.34594.rartemp\\BookManagement.razor",
+              "ViewState": "AgIAALgAAAAAAAAAAAAUwMoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:33:29.533Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 115,
+              "Title": "UserManagement.razor",
+              "DocumentMoniker": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.23006.rartemp\\UserManagement.razor",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.23006.rartemp\\UserManagement.razor",
+              "ToolTip": "C:\\Users\\provu\\AppData\\Local\\Temp\\Rar$DIa21220.23006.rartemp\\UserManagement.razor",
+              "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\Temp\\Rar$DIa21220.23006.rartemp\\UserManagement.razor",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAiwNEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-11T11:31:33.707Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 117,
+              "Title": "20260411090033_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411090033_InitialCreate.cs",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\Migrations\\20260411090033_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\Migrations\\20260411090033_InitialCreate.cs",
+              "RelativeToolTip": "LibraryShopManagement\\Migrations\\20260411090033_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T09:00:34.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 116,
+              "Title": "LibraryShopManagement.csproj",
+              "DocumentMoniker": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\LibraryShopManagement.csproj",
+              "RelativeDocumentMoniker": "LibraryShopManagement\\LibraryShopManagement.csproj",
+              "ToolTip": "C:\\Users\\provu\\Desktop\\Claude zip file\\PROJECT\\LibraryShopManagement\\LibraryShopManagement\\LibraryShopManagement.csproj",
+              "RelativeToolTip": "LibraryShopManagement\\LibraryShopManagement.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-11T08:56:53.872Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
