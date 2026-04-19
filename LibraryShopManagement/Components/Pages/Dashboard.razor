@@ -1,12 +1,16 @@
 ﻿@page "/dashboard"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 @inject IUserService UserService
 @inject IBookService BookService
 @inject ISnackbar Snackbar
 
 <PageTitle>Dashboard — Library Shop</PageTitle>
 
-<MudText Typo="Typo.h5" Style="color:#FFA07A;font-weight:700;" Class="mb-6">
-    <MudIcon Icon="@Icons.Material.Filled.Dashboard" Class="mr-2" />Dashboard
+<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-6"
+         Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.Dashboard" Class="mr-2" Color="Color.Primary" />
+    Dashboard
 </MudText>
 
 @if (_loading)
@@ -17,53 +21,53 @@ else
 {
     <MudGrid Spacing="4" Class="mb-6">
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl" Style="border-left:4px solid #FFA07A;">
+            <MudPaper Elevation="3" Class="pa-5 stat-primary">
                 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
                     <div>
-                        <MudText Typo="Typo.overline" Style="color:#8C5A3A;">Total Users</MudText>
-                        <MudText Typo="Typo.h4" Style="color:#FFA07A;font-weight:700;">@_totalUsers</MudText>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Total Users</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Primary" Style="font-weight:700;">@_totalUsers</MudText>
                     </div>
-                    <MudAvatar Style="background:#FFE4D6;width:52px;height:52px;">
-                        <MudIcon Icon="@Icons.Material.Filled.People" Style="color:#FFA07A;" />
+                    <MudAvatar Color="Color.Primary" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Inherit" />
                     </MudAvatar>
                 </MudStack>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl" Style="border-left:4px solid #87CEEB;">
+            <MudPaper Elevation="3" Class="pa-5 stat-secondary">
                 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
                     <div>
-                        <MudText Typo="Typo.overline" Style="color:#1A5C7A;">Total Books</MudText>
-                        <MudText Typo="Typo.h4" Style="color:#87CEEB;font-weight:700;">@_totalBooks</MudText>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Total Books</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Secondary" Style="font-weight:700;">@_totalBooks</MudText>
                     </div>
-                    <MudAvatar Style="background:#D6EFFA;width:52px;height:52px;">
-                        <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:#87CEEB;" />
+                    <MudAvatar Color="Color.Secondary" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.MenuBook" Color="Color.Inherit" />
                     </MudAvatar>
                 </MudStack>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl" Style="border-left:4px solid #A8D8A8;">
+            <MudPaper Elevation="3" Class="pa-5 stat-success">
                 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
                     <div>
-                        <MudText Typo="Typo.overline" Style="color:#2E6B2E;">Total Stock</MudText>
-                        <MudText Typo="Typo.h4" Style="color:#4CAF50;font-weight:700;">@_totalStock</MudText>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Total Stock</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Success" Style="font-weight:700;">@_totalStock</MudText>
                     </div>
-                    <MudAvatar Style="background:#E8F5E9;width:52px;height:52px;">
-                        <MudIcon Icon="@Icons.Material.Filled.Inventory" Style="color:#4CAF50;" />
+                    <MudAvatar Color="Color.Success" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.Inventory" Color="Color.Inherit" />
                     </MudAvatar>
                 </MudStack>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl" Style="border-left:4px solid #FFB347;">
+            <MudPaper Elevation="3" Class="pa-5 stat-warning">
                 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
                     <div>
-                        <MudText Typo="Typo.overline" Style="color:#8C5A10;">Admins</MudText>
-                        <MudText Typo="Typo.h4" Style="color:#FFB347;font-weight:700;">@_totalAdmins</MudText>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Admins</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Warning" Style="font-weight:700;">@_totalAdmins</MudText>
                     </div>
-                    <MudAvatar Style="background:#FFF3E0;width:52px;height:52px;">
-                        <MudIcon Icon="@Icons.Material.Filled.AdminPanelSettings" Style="color:#FFB347;" />
+                    <MudAvatar Color="Color.Warning" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.AdminPanelSettings" Color="Color.Inherit" />
                     </MudAvatar>
                 </MudStack>
             </MudPaper>
@@ -72,9 +76,10 @@ else
 
     <MudGrid Spacing="4">
         <MudItem xs="12" md="6">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl">
-                <MudText Typo="Typo.h6" Style="color:#FFA07A;font-weight:600;" Class="mb-3">
-                    <MudIcon Icon="@Icons.Material.Filled.People" Class="mr-1" />Recent Users
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-3" Style="font-weight:600;">
+                    <MudIcon Icon="@Icons.Material.Filled.People" Class="mr-1" Color="Color.Primary" />
+                    Recent Users
                 </MudText>
                 <MudDivider Class="mb-3" />
                 @foreach (var u in _recentUsers)
@@ -82,18 +87,18 @@ else
                     <MudStack Row AlignItems="AlignItems.Center" Class="mb-2" Spacing="2">
                         @if (!string.IsNullOrEmpty(u.ProfileImage))
                         {
-                            <MudAvatar Style="width:36px;height:36px;">
+                            <MudAvatar Color="Color.Primary" Style="width:36px;height:36px;">
                                 <MudImage Src="@u.ProfileImage" Style="width:100%;height:100%;object-fit:cover;" />
                             </MudAvatar>
                         }
                         else
                         {
-                            <MudAvatar Style="background:#FFE4D6;color:#FFA07A;width:36px;height:36px;font-size:.85rem;">
-                                @u.Username[..1].ToUpper()
+                            <MudAvatar Color="Color.Primary" Style="width:36px;height:36px;font-size:.85rem;">
+                                @u.FirstName[..1].ToUpper()
                             </MudAvatar>
                         }
                         <div>
-                            <MudText Typo="Typo.body2" Style="font-weight:600;">@u.Username</MudText>
+                            <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:600;">@u.FullName</MudText>
                             <MudText Typo="Typo.caption" Color="Color.Secondary">@u.Role</MudText>
                         </div>
                     </MudStack>
@@ -101,9 +106,10 @@ else
             </MudPaper>
         </MudItem>
         <MudItem xs="12" md="6">
-            <MudPaper Elevation="2" Class="pa-5 rounded-xl">
-                <MudText Typo="Typo.h6" Style="color:#87CEEB;font-weight:600;" Class="mb-3">
-                    <MudIcon Icon="@Icons.Material.Filled.MenuBook" Class="mr-1" />Recent Books
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudText Typo="Typo.h6" Color="Color.Secondary" Class="mb-3" Style="font-weight:600;">
+                    <MudIcon Icon="@Icons.Material.Filled.AutoStories" Class="mr-1" Color="Color.Secondary" />
+                    Recent Books
                 </MudText>
                 <MudDivider Class="mb-3" />
                 @foreach (var b in _recentBooks)
@@ -112,22 +118,22 @@ else
                         <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
                             @if (!string.IsNullOrEmpty(b.CoverImage))
                             {
-                                <MudAvatar Style="width:36px;height:36px;border-radius:4px;">
+                                <MudAvatar Color="Color.Secondary" Style="width:36px;height:36px;border-radius:4px;">
                                     <MudImage Src="@b.CoverImage" Style="width:100%;height:100%;object-fit:cover;" />
                                 </MudAvatar>
                             }
                             else
                             {
-                                <MudAvatar Style="background:#D6EFFA;color:#1A5C7A;width:36px;height:36px;border-radius:4px;font-size:.75rem;">
+                                <MudAvatar Color="Color.Secondary" Style="width:36px;height:36px;border-radius:4px;font-size:.75rem;">
                                     @b.Title[..1].ToUpper()
                                 </MudAvatar>
                             }
                             <div>
-                                <MudText Typo="Typo.body2" Style="font-weight:600;">@b.Title</MudText>
+                                <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:600;">@b.Title</MudText>
                                 <MudText Typo="Typo.caption" Color="Color.Secondary">@b.Author</MudText>
                             </div>
                         </MudStack>
-                        <MudChip T="string" Size="Size.Small" Style="background:#D6EFFA;color:#1A5C7A;">
+                        <MudChip T="string" Size="Size.Small" Color="Color.Secondary">
                             &#8369;@b.Price.ToString("F2")
                         </MudChip>
                     </MudStack>

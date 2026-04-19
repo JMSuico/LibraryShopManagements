@@ -5,55 +5,82 @@
 @inject AuthenticationStateProvider AuthStateProvider
 @inject ISnackbar Snackbar
 
-<PageTitle>Login — Library Shop</PageTitle>
+<PageTitle>Sign In — Library Shop</PageTitle>
 
-<MudPaper Elevation="4" Class="pa-8 rounded-xl" Style="width:100%;max-width:420px;background:white;">
-    <MudStack AlignItems="AlignItems.Center" Class="mb-6">
-        <MudAvatar Style="background:#FFA07A;width:56px;height:56px;">
-            <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:white;font-size:1.8rem;" />
+<MudPaper Elevation="0" Class="auth-card pa-8 rounded-xl"
+          Style="width:100%;max-width:420px;">
+
+    @* Header *@
+    <MudStack AlignItems="AlignItems.Center" Class="mb-6" Spacing="2">
+        <MudAvatar Style="background:var(--cosmic-violet-dim);
+                          border:2px solid var(--cosmic-violet);
+                          width:64px;height:64px;">
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories"
+                     Style="color:var(--text-accent-violet);font-size:2rem;" />
         </MudAvatar>
-        <MudText Typo="Typo.h5" Style="color:#FFA07A;font-weight:700;">Library Shop</MudText>
-        <MudText Typo="Typo.body2" Color="Color.Secondary">Sign in to your account</MudText>
+        <MudText Typo="Typo.h5"
+                 Style="color:var(--text-heading);font-weight:700;letter-spacing:.03em;">
+            Library Shop
+        </MudText>
+        <MudText Typo="Typo.body2" Style="color:var(--text-muted);">
+            Sign in to continue
+        </MudText>
     </MudStack>
 
-    <MudSelect T="UserRole" Label="Account Type" @bind-Value="_role" Variant="Variant.Outlined"
-               AnchorOrigin="Origin.BottomCenter" Class="mb-4"
-               AdornmentIcon="@Icons.Material.Filled.ManageAccounts" AdornmentColor="Color.Primary">
+    @* Account Type *@
+    <MudSelect T="UserRole" Label="Account Type" @bind-Value="_role"
+               Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter"
+               Class="mb-4"
+               AdornmentIcon="@Icons.Material.Filled.ManageAccounts"
+               AdornmentColor="Color.Primary">
         @foreach (UserRole role in Enum.GetValues(typeof(UserRole)))
         {
             <MudSelectItem Value="role">@role.ToString()</MudSelectItem>
         }
     </MudSelect>
 
-    <MudTextField @bind-Value="_username" Label="Username" Variant="Variant.Outlined" Class="mb-4"
-                  AdornmentIcon="@Icons.Material.Filled.Person" Adornment="Adornment.Start"
+    @* Username *@
+    <MudTextField @bind-Value="_username" Label="Username"
+                  Variant="Variant.Outlined" Class="mb-4"
+                  Adornment="Adornment.Start"
+                  AdornmentIcon="@Icons.Material.Filled.Person"
                   AdornmentColor="Color.Primary" />
 
-    <MudTextField @bind-Value="_password" Label="Password" Variant="Variant.Outlined" Class="mb-6"
-                  InputType="@(_showPassword? InputType.Text: InputType.Password)"
+    @* Password *@
+    <MudTextField @bind-Value="_password" Label="Password"
+                  Variant="Variant.Outlined" Class="mb-6"
+                  InputType="@(_showPwd? InputType.Text: InputType.Password)"
                   Adornment="Adornment.End"
-                  AdornmentIcon="@(_showPassword? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
-                  OnAdornmentClick="@(() => _showPassword = !_showPassword)"
+                  AdornmentIcon="@(_showPwd ? Icons.Material.Filled.Visibility
+                                                              : Icons.Material.Filled.VisibilityOff)"
+                  OnAdornmentClick="@(() => _showPwd = !_showPwd)"
                   AdornmentColor="Color.Primary" />
 
-    <MudButton FullWidth Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large"
-               OnClick="HandleLogin" Disabled="_loading"
-               Style="border-radius:8px;font-weight:600;height:48px;">
+    @* Sign In *@
+    <MudButton FullWidth Variant="Variant.Filled" Color="Color.Primary"
+               Size="Size.Large" OnClick="HandleLogin" Disabled="_loading"
+               Style="border-radius:10px;font-weight:600;height:48px;
+                      letter-spacing:.05em;">
         @if (_loading)
         {
             <MudProgressCircular Size="Size.Small" Indeterminate Color="Color.Inherit" />
         }
         else
         {
+
             <span>Sign In</span>
         }
     </MudButton>
 
-    <MudDivider Class="my-4" />
+    <MudDivider Class="my-5" />
 
-    <MudText Typo="Typo.body2" Align="Align.Center" Style="color:#8C5A3A;">
+    <MudText Typo="Typo.body2" Align="Align.Center"
+             Style="color:var(--text-muted);">
         Don't have an account?
-        <MudLink Href="/register" Style="color:#FFA07A;font-weight:600;"> Click Here</MudLink>
+        <MudLink Href="/register"
+                 Style="color:var(--text-accent-violet);font-weight:600;">
+            Click Here
+        </MudLink>
     </MudText>
 </MudPaper>
 
@@ -61,7 +88,7 @@
     private UserRole _role = UserRole.Customer;
     private string _username = string.Empty;
     private string _password = string.Empty;
-    private bool _showPassword = false;
+    private bool _showPwd = false;
     private bool _loading = false;
 
     private async Task HandleLogin()
@@ -71,7 +98,6 @@
             Snackbar.Add("Please fill in all fields.", Severity.Warning);
             return;
         }
-
         _loading = true;
         try
         {
@@ -83,19 +109,14 @@
 
             if (user is null)
             {
-                Snackbar.Add("Invalid username, password, or account type.", Severity.Error);
+                Snackbar.Add("Invalid credentials or account type.", Severity.Error);
                 return;
             }
-
             var provider = (CustomAuthenticationStateProvider)AuthStateProvider;
             provider.MarkUserAsAuthenticated(user);
-            Snackbar.Add($"Welcome, {user.Username}!", Severity.Success);
-            // ✅ No forceLoad — keeps SignalR circuit alive
+            Snackbar.Add($"Welcome back, {user.FirstName}!", Severity.Success);
             Navigation.NavigateTo("/dashboard");
         }
-        finally
-        {
-            _loading = false;
-        }
+        finally { _loading = false; }
     }
 }

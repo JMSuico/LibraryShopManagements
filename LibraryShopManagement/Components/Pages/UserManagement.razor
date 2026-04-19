@@ -1,4 +1,6 @@
 ﻿@page "/users"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 @inject IUserService UserService
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
@@ -6,17 +8,18 @@
 <PageTitle>User Management — Library Shop</PageTitle>
 
 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-5">
-    <MudText Typo="Typo.h5" Style="color:#FFA07A;font-weight:700;">
-        <MudIcon Icon="@Icons.Material.Filled.People" Class="mr-2" />User Management
+    <MudText Typo="Typo.h5" Color="Color.Primary" Style="font-weight:700;">
+        <MudIcon Icon="@Icons.Material.Filled.People" Class="mr-2" Color="Color.Primary" />
+        User Management
     </MudText>
     <MudButton Variant="Variant.Filled" Color="Color.Primary"
                StartIcon="@Icons.Material.Filled.PersonAdd"
-               OnClick="OpenAdd" Style="border-radius:8px;font-weight:600;">
+               OnClick="OpenAdd" Style="border-radius:10px;font-weight:600;">
         Add User
     </MudButton>
 </MudStack>
 
-<MudPaper Elevation="2" Class="rounded-xl overflow-hidden">
+<MudPaper Elevation="3" Class="rounded-xl overflow-hidden">
     <MudTable T="User" @ref="_table" ServerData="LoadUsers" Hover Dense Striped
               Loading="_loading" LoadingProgressColor="Color.Primary"
               SortLabel="Sort By" Breakpoint="Breakpoint.Sm">
@@ -26,8 +29,7 @@
                           AdornmentColor="Color.Primary" Variant="Variant.Outlined"
                           Immediate="true" DebounceInterval="300"
                           Clearable Style="max-width:400px;" Class="mt-0"
-                          OnKeyUp="OnSearchKeyUp"
-                          OnClearButtonClick="ClearSearch" />
+                          OnKeyUp="OnSearchKeyUp" OnClearButtonClick="ClearSearch" />
         </ToolBarContent>
         <HeaderContent>
             <MudTh><MudTableSortLabel T="User" SortBy="u => u.Id">ID</MudTableSortLabel></MudTh>
@@ -41,49 +43,63 @@
             <MudTh Style="text-align:center;">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="ID">@context.Id</MudTd>
+            <MudTd DataLabel="ID">
+                <MudText Typo="Typo.body2" Color="Color.Default">@context.Id</MudText>
+            </MudTd>
             <MudTd DataLabel="Photo">
                 @if (!string.IsNullOrEmpty(context.ProfileImage))
                 {
-                    <MudAvatar Style="width:34px;height:34px;">
+                    <MudAvatar Color="Color.Primary" Style="width:34px;height:34px;">
                         <MudImage Src="@context.ProfileImage" Style="width:100%;height:100%;object-fit:cover;" />
                     </MudAvatar>
                 }
                 else
                 {
-                    <MudAvatar Style="background:#FFE4D6;color:#FFA07A;width:34px;height:34px;font-size:.8rem;">
+                    <MudAvatar Color="Color.Primary" Style="width:34px;height:34px;font-size:.8rem;">
                         @(context.FirstName.Length > 0 ? context.FirstName[..1].ToUpper() : "?")
                     </MudAvatar>
                 }
             </MudTd>
-            <MudTd DataLabel="First Name"><MudText Style="font-weight:500;">@context.FirstName</MudText></MudTd>
-            <MudTd DataLabel="Last Name"><MudText Style="font-weight:500;">@context.LastName</MudText></MudTd>
-            <MudTd DataLabel="Username">@context.Username</MudTd>
-            <MudTd DataLabel="Email">@context.Email</MudTd>
+            <MudTd DataLabel="First Name">
+                <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:500;">@context.FirstName</MudText>
+            </MudTd>
+            <MudTd DataLabel="Last Name">
+                <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:500;">@context.LastName</MudText>
+            </MudTd>
+            <MudTd DataLabel="Username">
+                <MudText Typo="Typo.body2" Color="Color.Default">@context.Username</MudText>
+            </MudTd>
+            <MudTd DataLabel="Email">
+                <MudText Typo="Typo.body2" Color="Color.Secondary">@context.Email</MudText>
+            </MudTd>
             <MudTd DataLabel="Address">
-                <MudText Style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;">
+                <MudText Typo="Typo.body2" Color="Color.Default"
+                         Style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;">
                     @(string.IsNullOrEmpty(context.Address) ? "—" : context.Address)
                 </MudText>
             </MudTd>
             <MudTd DataLabel="Role">
-                <MudChip T="string" Size="Size.Small" Style="@RoleStyle(context.Role)">@context.Role</MudChip>
+                <MudChip T="string" Size="Size.Small" Class="@RoleChipClass(context.Role)">
+                    @context.Role
+                </MudChip>
             </MudTd>
             <MudTd DataLabel="Actions" Style="text-align:center;white-space:nowrap;">
                 <MudIconButton Icon="@Icons.Material.Filled.Visibility"
                                Color="Color.Secondary" Size="Size.Small"
-                               OnClick="@(() => OpenView(context))" Title="View" />
+                               OnClick="@(() => OpenView(context))" aria-label="View" />
                 <MudIconButton Icon="@Icons.Material.Filled.Edit"
                                Color="Color.Primary" Size="Size.Small"
-                               OnClick="@(() => OpenEdit(context))" Title="Edit" />
+                               OnClick="@(() => OpenEdit(context))" aria-label="Edit" />
                 <MudIconButton Icon="@Icons.Material.Filled.Delete"
                                Color="Color.Error" Size="Size.Small"
-                               OnClick="@(() => OpenDelete(context))" Title="Delete" />
+                               OnClick="@(() => OpenDelete(context))" aria-label="Delete" />
             </MudTd>
         </RowTemplate>
         <PagerContent><MudTablePager PageSizeOptions="new int[] { 10, 25, 50 }" /></PagerContent>
         <NoRecordsContent>
             <MudStack AlignItems="AlignItems.Center" Class="pa-6">
-                <MudIcon Icon="@Icons.Material.Filled.PeopleOutline" Style="font-size:3rem;color:#FFD4C2;" />
+                <MudIcon Icon="@Icons.Material.Filled.PeopleOutline"
+                         Color="Color.Primary" Style="font-size:3rem;opacity:.4;" />
                 <MudText Color="Color.Secondary">No users found.</MudText>
             </MudStack>
         </NoRecordsContent>
@@ -104,12 +120,9 @@
         _loading = false;
     }
 
-    // ServerData with in-memory filter+sort — most reliable approach
     private Task<TableData<User>> LoadUsers(TableState state, CancellationToken ct)
     {
         var query = _allUsers.AsQueryable();
-
-        // Search filter
         if (!string.IsNullOrWhiteSpace(_search))
         {
             var s = _search.Trim().ToLower();
@@ -123,8 +136,6 @@
                 u.Address.ToLower().Contains(s) ||
                 u.Role.ToString().ToLower().Contains(s));
         }
-
-        // Sort
         query = state.SortLabel switch
         {
             "u => u.Id" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(u => u.Id) : query.OrderBy(u => u.Id),
@@ -136,29 +147,19 @@
             "u => u.Role.ToString()" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(u => u.Role.ToString()) : query.OrderBy(u => u.Role.ToString()),
             _ => query.OrderBy(u => u.Id)
         };
-
         var total = query.Count();
         var items = query.Skip(state.Page * state.PageSize).Take(state.PageSize).ToList();
-
         return Task.FromResult(new TableData<User> { Items = items, TotalItems = total });
     }
 
-    private async Task OnSearchKeyUp(KeyboardEventArgs e)
-    {
-        if (_table != null) await _table.ReloadServerData();
-    }
-
-    private async Task ClearSearch()
-    {
-        _search = string.Empty;
-        if (_table != null) await _table.ReloadServerData();
-    }
+    private async Task OnSearchKeyUp(KeyboardEventArgs e) { if (_table != null) await _table.ReloadServerData(); }
+    private async Task ClearSearch() { _search = string.Empty; if (_table != null) await _table.ReloadServerData(); }
 
     private async Task Reload()
     {
         _loading = true;
         try { _allUsers = (await UserService.GetUsersAsync()).ToList(); }
-        catch (Exception ex) { Snackbar.Add($"Failed to load: {ex.Message}", Severity.Error); }
+        catch (Exception ex) { Snackbar.Add($"Failed: {ex.Message}", Severity.Error); }
         _loading = false;
         if (_table != null) await _table.ReloadServerData();
     }
@@ -189,8 +190,7 @@
 
     private async Task OpenDelete(User user)
     {
-        var p = new DialogParameters<ConfirmDialog>
-                   { { x => x.Message, $"Do you want to delete \"{user.FullName}\"?" } };
+        var p = new DialogParameters<ConfirmDialog> { { x => x.Message, $"Do you want to delete \"{user.FullName}\"?" } };
         var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
         var dlg = await DialogService.ShowAsync<ConfirmDialog>("Confirm Delete", p, opts);
         var res = await dlg.Result;
@@ -201,11 +201,12 @@
         }
     }
 
-    private static string RoleStyle(UserRole r) => r switch
+    // Role chip uses CSS utility class from app.css (colors defined in MainLayout --clr-* vars)
+    private static string RoleChipClass(UserRole r) => r switch
     {
-        UserRole.Admin => "background:#FFE4D6;color:#8C3A10;",
-        UserRole.Staff => "background:#D6EFFA;color:#1A5C7A;",
-        UserRole.Customer => "background:#E8F5E9;color:#2E6B2E;",
+        UserRole.Admin => "chip-role-admin",
+        UserRole.Staff => "chip-role-staff",
+        UserRole.Customer => "chip-role-customer",
         _ => ""
     };
 }

@@ -120,6 +120,7 @@ C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShop
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\LibraryShopManagement.AssemblyInfo.cs
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\LibraryShopManagement.csproj.CoreCompileInputs.cache
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\LibraryShopManagement.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\LibraryShopManagement.sourcelink.json
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -130,7 +131,8 @@ C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShop
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\tzxjg6is5z-{0}-o2b68hjqqd-o2b68hjqqd.gz
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\0wz98yz2xy-{0}-8dleymzaev-8dleymzaev.gz
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\o7k4cxtn0u-{0}-0ykner63ol-0ykner63ol.gz
-C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\ueszbz86w4-{0}-khy4lop6wu-khy4lop6wu.gz
+C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\ueszbz86w4-{0}-24dzb3mjtc-24dzb3mjtc.gz
+C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\kn5p2ekxjd-{0}-2pw46b5i5z-2pw46b5i5z.gz
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\6re74pjt18-{0}-bqjiyaj88i-bqjiyaj88i.gz
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\3uip0vzewd-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\provu\Desktop\Claude zip file\PROJECT\LibraryShopManagement\LibraryShopManagement\obj\Debug\net9.0\compressed\vh9ooenn3e-{0}-erw9l3u2r3-erw9l3u2r3.gz

@@ -2,26 +2,39 @@
 @inject AuthenticationStateProvider AuthStateProvider
 @inject NavigationManager Navigation
 
-<PageTitle>Logout — Library Shop</PageTitle>
+<PageTitle>Sign Out — Library Shop</PageTitle>
 
-<div style="position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;z-index:9999;">
-    <MudPaper Elevation="8" Class="pa-8 rounded-xl d-flex flex-column align-center" Style="width:380px;max-width:90vw;background:white;">
-        <MudAvatar Style="background:#FFE4D6;width:64px;height:64px;" Class="mb-4">
-            <MudIcon Icon="@Icons.Material.Filled.Logout" Style="color:#FFA07A;font-size:2rem;" />
+<div style="position:fixed;inset:0;
+            background:rgba(0,0,0,0.65);
+            backdrop-filter:blur(4px);
+            display:flex;align-items:center;
+            justify-content:center;z-index:9999;">
+    <MudPaper Elevation="0" Class="auth-card pa-8 d-flex flex-column align-center"
+              Style="width:380px;max-width:90vw;border-radius:20px !important;">
+        <MudAvatar Style="background:rgba(239,68,68,.2);
+                          border:2px solid rgba(239,68,68,.5);
+                          width:64px;height:64px;" Class="mb-4">
+            <MudIcon Icon="@Icons.Material.Filled.Logout"
+                     Style="color:#EF4444;font-size:2rem;" />
         </MudAvatar>
-        <MudText Typo="Typo.h6" Style="color:#3A1A08;font-weight:700;" Class="mb-2">Sign Out</MudText>
-        <MudText Typo="Typo.body2" Color="Color.Secondary" Align="Align.Center" Class="mb-6">
-            Do you want to logout?<br />You will be returned to the login page.
+        <MudText Typo="Typo.h6"
+                 Style="color:var(--text-heading);font-weight:700;" Class="mb-2">
+            Sign Out
+        </MudText>
+        <MudText Typo="Typo.body2"
+                 Style="color:var(--text-muted);" Align="Align.Center" Class="mb-6">
+            Do you want to logout?<br />
+            You will be returned to the login page.
         </MudText>
         <MudStack Row Spacing="3" Class="w-100">
-            <MudButton FullWidth Variant="Variant.Outlined" Color="Color.Default"
+            <MudButton FullWidth Variant="Variant.Outlined" Color="Color.Primary"
                        OnClick="@(() => Navigation.NavigateTo("/dashboard"))"
-                       Style="border-radius:8px;font-weight:600;">
+                       Style="border-radius:10px;font-weight:600;">
                 Cancel
             </MudButton>
             <MudButton FullWidth Variant="Variant.Filled" Color="Color.Error"
                        OnClick="HandleLogout"
-                       Style="border-radius:8px;font-weight:600;">
+                       Style="border-radius:10px;font-weight:600;">
                 Logout
             </MudButton>
         </MudStack>
@@ -33,7 +46,6 @@
     {
         var provider = (CustomAuthenticationStateProvider)AuthStateProvider;
         provider.MarkUserAsLoggedOut();
-        // ✅ No forceLoad — keeps circuit alive, clean nav to login
         Navigation.NavigateTo("/login");
     }
 }

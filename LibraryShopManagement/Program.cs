@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
 using MudBlazor.Services;
@@ -10,32 +11,45 @@ using LibraryShopManagement.Features.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Blazor Server
+// ── Blazor Server ──────────────────────────────────────────────────────────
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// MudBlazor
+// ── MudBlazor ──────────────────────────────────────────────────────────────
 builder.Services.AddMudServices();
 
-// EF Core + Pomelo MySQL (XAMPP)
+// ── EF Core + Pomelo MySQL (XAMPP) ─────────────────────────────────────────
+// Hardcoded version avoids AutoDetect connecting to MySQL at startup
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseMySql(connectionString,
+        new MySqlServerVersion(new Version(8, 0, 36))));
 
-// Repositories
+// ── Repositories ───────────────────────────────────────────────────────────
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
 
-// Services
+// ── Services ───────────────────────────────────────────────────────────────
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IThemeService, ThemeService>();
 
-// ✅ Blazor Server auth — do NOT add HTTP auth middleware
-// [Authorize] on Blazor pages is handled by <AuthorizeRouteView>, not HTTP pipeline
-builder.Services.AddAuthorizationCore();
+// ── Authentication + Authorization ─────────────────────────────────────────
+// Cookie scheme registered so [Authorize] + AuthorizeRouteView work correctly.
+// Actual auth state is managed by CustomAuthenticationStateProvider (in-memory).
+// The cookie middleware is transparent — our Blazor auth state provider controls
+// who is logged in, independent of HTTP cookies.
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login";
+        options.AccessDeniedPath = "/login";
+    });
+builder.Services.AddAuthorization();
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
+// ── Build ──────────────────────────────────────────────────────────────────
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -48,8 +62,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-// ✅ No app.UseAuthentication() or app.UseAuthorization() here
-// Those are for MVC/Razor Pages — Blazor Server uses AuthenticationStateProvider instead
+// Authentication → Authorization must be in this order
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorComponents<LibraryShopManagement.Components.App>()
     .AddInteractiveServerRenderMode();

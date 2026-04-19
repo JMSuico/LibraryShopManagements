@@ -1,8 +1,8 @@
-﻿<MudDialog Style="min-width:400px;">
+﻿<MudDialog Style="min-width:380px;">
     <TitleContent>
         <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-            <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:#87CEEB;" />
-            <MudText Typo="Typo.h6" Style="color:#87CEEB;font-weight:700;">Book Details</MudText>
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Style="font-weight:700;">Book Details</MudText>
         </MudStack>
     </TitleContent>
     <DialogContent>
@@ -11,59 +11,41 @@
             <MudStack AlignItems="AlignItems.Center" Class="mb-4">
                 @if (!string.IsNullOrEmpty(Book.CoverImage))
                 {
-                    <MudAvatar Style="width:100px;height:130px;border-radius:8px;border:3px solid #87CEEB;">
+                    <MudAvatar Color="Color.Secondary" Style="width:100px;height:130px;border-radius:8px;border:3px solid var(--clr-secondary);">
                         <MudImage Src="@Book.CoverImage" Style="width:100%;height:100%;object-fit:cover;" />
                     </MudAvatar>
                 }
                 else
                 {
-                    <MudAvatar Style="background:#D6EFFA;color:#1A5C7A;width:100px;height:130px;border-radius:8px;font-size:2.5rem;border:3px solid #D6EFFA;">
+                    <MudAvatar Color="Color.Secondary" Style="width:100px;height:130px;border-radius:8px;font-size:2.5rem;border:3px solid var(--clr-secondary);">
                         @(Book.Title.Length > 0 ? Book.Title[..1].ToUpper() : "?")
                     </MudAvatar>
                 }
-                <MudText Typo="Typo.h6" Style="color:#1A3A4A;font-weight:700;margin-top:10px;text-align:center;">
-                    @Book.Title
-                </MudText>
+                <MudText Typo="Typo.h6" Color="Color.Default" Style="font-weight:700;margin-top:10px;text-align:center;">@Book.Title</MudText>
                 <MudText Typo="Typo.body2" Color="Color.Secondary">by @Book.Author</MudText>
             </MudStack>
-
             <MudDivider Class="mb-3" />
-
             <MudStack Spacing="2">
                 <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                    <MudIcon Icon="@Icons.Material.Filled.Tag" Style="color:#87CEEB;font-size:1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.Tag" Color="Color.Secondary" Style="font-size:1.1rem;" />
                     <div>
                         <MudText Typo="Typo.caption" Color="Color.Secondary">Book ID</MudText>
-                        <MudText Typo="Typo.body2" Style="font-weight:500;">#@Book.Id</MudText>
+                        <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:500;">#@Book.Id</MudText>
                     </div>
                 </MudStack>
                 <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                    <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:#87CEEB;font-size:1.1rem;" />
-                    <div>
-                        <MudText Typo="Typo.caption" Color="Color.Secondary">Title</MudText>
-                        <MudText Typo="Typo.body2" Style="font-weight:500;">@Book.Title</MudText>
-                    </div>
-                </MudStack>
-                <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                    <MudIcon Icon="@Icons.Material.Filled.Person" Style="color:#87CEEB;font-size:1.1rem;" />
-                    <div>
-                        <MudText Typo="Typo.caption" Color="Color.Secondary">Author</MudText>
-                        <MudText Typo="Typo.body2" Style="font-weight:500;">@Book.Author</MudText>
-                    </div>
-                </MudStack>
-                <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                    <MudIcon Icon="@Icons.Material.Filled.AttachMoney" Style="color:#87CEEB;font-size:1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.AttachMoney" Color="Color.Secondary" Style="font-size:1.1rem;" />
                     <div>
                         <MudText Typo="Typo.caption" Color="Color.Secondary">Price</MudText>
-                        <MudText Typo="Typo.body2" Style="font-weight:600;color:#FFA07A;">&#8369;@Book.Price.ToString("F2")</MudText>
+                        <MudText Typo="Typo.body2" Color="Color.Primary" Style="font-weight:600;">&#8369;@Book.Price.ToString("F2")</MudText>
                     </div>
                 </MudStack>
                 <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
-                    <MudIcon Icon="@Icons.Material.Filled.Inventory" Style="color:#87CEEB;font-size:1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.Inventory" Color="Color.Secondary" Style="font-size:1.1rem;" />
                     <div>
                         <MudText Typo="Typo.caption" Color="Color.Secondary">Stock</MudText>
                         <MudChip T="string" Size="Size.Small"
-                                 Style="@(Book.Stock < 5 ? "background:#FFEBEE;color:#C62828;" : "background:#E8F5E9;color:#2E6B2E;")">
+                                 Class="@(Book.Stock < 5 ? "chip-stock-low" : "chip-stock-ok")">
                             @Book.Stock @(Book.Stock == 1 ? "copy" : "copies")
                         </MudChip>
                     </div>
@@ -72,11 +54,10 @@
         }
     </DialogContent>
     <DialogActions>
-        <MudButton Variant="Variant.Filled" Color="Color.Secondary"
-                   Style="font-weight:600;color:#1A3A4A;" OnClick="@(() => MudDialog.Cancel())">Close</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" Style="font-weight:600;"
+                   OnClick="@(() => MudDialog.Cancel())">Close</MudButton>
     </DialogActions>
 </MudDialog>
-
 @code {
     [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
     [Parameter] public Book? Book { get; set; }

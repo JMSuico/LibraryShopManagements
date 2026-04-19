@@ -4,77 +4,56 @@
 <MudDialog Style="min-width:440px;">
     <TitleContent>
         <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
-            <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:#87CEEB;" />
-            <MudText Typo="Typo.h6" Style="color:#87CEEB;font-weight:700;">
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Style="font-weight:700;">
                 @(ExistingBook == null ? "Add New Book" : "Edit Book")
             </MudText>
         </MudStack>
     </TitleContent>
     <DialogContent>
         <MudStack Spacing="3">
-
-            <MudText Typo="Typo.subtitle2" Style="color:#1A5C7A;font-weight:600;">Book Cover</MudText>
+            <MudText Typo="Typo.subtitle2" Color="Color.Secondary" Style="font-weight:600;">Book Cover</MudText>
             <MudStack Row AlignItems="AlignItems.Center" Spacing="3">
                 @if (!string.IsNullOrEmpty(_book.CoverImage))
                 {
-                    <MudAvatar Style="width:68px;height:68px;border-radius:6px;border:2px solid #87CEEB;">
+                    <MudAvatar Color="Color.Secondary" Style="width:68px;height:68px;border-radius:6px;border:2px solid var(--clr-secondary);">
                         <MudImage Src="@_book.CoverImage" Style="width:100%;height:100%;object-fit:cover;" />
                     </MudAvatar>
                 }
                 else
                 {
-                    <MudAvatar Style="background:#D6EFFA;color:#1A5C7A;width:68px;height:68px;border-radius:6px;font-size:1.6rem;">
+                    <MudAvatar Color="Color.Secondary" Style="width:68px;height:68px;border-radius:6px;font-size:1.6rem;">
                         @(_book.Title.Length > 0 ? _book.Title[..1].ToUpper() : "?")
                     </MudAvatar>
                 }
                 <MudStack Spacing="1">
-                    <InputFile id="book-cover-input" OnChange="UploadCover"
-                               accept="image/*" style="display:none;" />
+                    <InputFile id="book-cover-input" OnChange="UploadCover" accept="image/*" style="display:none;" />
                     <label for="book-cover-input" style="cursor:pointer;">
                         <MudButton HtmlTag="span" Variant="Variant.Outlined" Color="Color.Secondary"
                                    Size="Size.Small" StartIcon="@Icons.Material.Filled.Upload"
-                                   Style="border-radius:6px;color:#1A3A4A;pointer-events:none;">
-                            Upload Cover
-                        </MudButton>
+                                   Style="border-radius:6px;pointer-events:none;">Upload Cover</MudButton>
                     </label>
                     @if (!string.IsNullOrEmpty(_book.CoverImage))
                     {
                         <MudButton Size="Size.Small" Variant="Variant.Text" Color="Color.Error"
-                                   OnClick="@(() => { _book.CoverImage = null; StateHasChanged(); })">
-                            Remove
-                        </MudButton>
+                                   OnClick="@(() => { _book.CoverImage = null; StateHasChanged(); })">Remove</MudButton>
                     }
                 </MudStack>
             </MudStack>
-
             <MudDivider />
-
-            <MudTextField @bind-Value="_book.Title" Label="Title"
-                          Variant="Variant.Outlined" Immediate="true"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.MenuBook"
-                          AdornmentColor="Color.Secondary" />
-            <MudTextField @bind-Value="_book.Author" Label="Author"
-                          Variant="Variant.Outlined"
-                          Adornment="Adornment.Start"
-                          AdornmentIcon="@Icons.Material.Filled.Person"
-                          AdornmentColor="Color.Secondary" />
-            <MudNumericField @bind-Value="_book.Price" Label="Price (₱)"
-                             Variant="Variant.Outlined" Min="0m" Format="F2"
-                             Adornment="Adornment.Start"
-                             AdornmentIcon="@Icons.Material.Filled.AttachMoney"
-                             AdornmentColor="Color.Primary" />
-            <MudNumericField @bind-Value="_book.Stock" Label="Stock"
-                             Variant="Variant.Outlined" Min="0"
-                             Adornment="Adornment.Start"
-                             AdornmentIcon="@Icons.Material.Filled.Inventory"
-                             AdornmentColor="Color.Primary" />
+            <MudTextField @bind-Value="_book.Title" Label="Title" Variant="Variant.Outlined" Immediate="true"
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AutoStories" AdornmentColor="Color.Secondary" />
+            <MudTextField @bind-Value="_book.Author" Label="Author" Variant="Variant.Outlined"
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Person" AdornmentColor="Color.Secondary" />
+            <MudNumericField @bind-Value="_book.Price" Label="Price (₱)" Variant="Variant.Outlined" Min="0m" Format="F2"
+                             Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" AdornmentColor="Color.Primary" />
+            <MudNumericField @bind-Value="_book.Stock" Label="Stock" Variant="Variant.Outlined" Min="0"
+                             Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Inventory" AdornmentColor="Color.Primary" />
         </MudStack>
     </DialogContent>
     <DialogActions>
-        <MudButton Variant="Variant.Text" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
-        <MudButton Variant="Variant.Filled" Color="Color.Secondary"
-                   Style="font-weight:600;color:#1A3A4A;" OnClick="Submit" Disabled="_saving">
+        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" Style="font-weight:600;" OnClick="Submit" Disabled="_saving">
             @if (_saving)
             {
                 <MudProgressCircular Size="Size.Small" Indeterminate />
@@ -87,14 +66,10 @@
         </MudButton>
     </DialogActions>
 </MudDialog>
-
 @code {
     [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
     [Parameter] public Book? ExistingBook { get; set; }
-
-    private Book _book = new();
-    private bool _saving = false;
-
+    private Book _book = new(); private bool _saving;
     protected override void OnInitialized()
     {
         if (ExistingBook != null)
@@ -108,31 +83,23 @@
                 CoverImage = ExistingBook.CoverImage
             };
     }
-
     private async Task UploadCover(InputFileChangeEventArgs e)
     {
         try
         {
-            var file = e.File;
-            using var stream = file.OpenReadStream(5 * 1024 * 1024);
-            var buf = new byte[file.Size];
-            await stream.ReadAsync(buf);
-            _book.CoverImage = $"data:{file.ContentType};base64,{Convert.ToBase64String(buf)}";
+            var f = e.File; using var s = f.OpenReadStream(5 * 1024 * 1024); var b = new byte[f.Size];
+            await s.ReadAsync(b); _book.CoverImage = $"data:{f.ContentType};base64,{Convert.ToBase64String(b)}";
             StateHasChanged();
         }
         catch { Snackbar.Add("Image too large (max 5 MB).", Severity.Warning); }
     }
-
     private async Task Submit()
     {
-        if (string.IsNullOrWhiteSpace(_book.Title))
-        { Snackbar.Add("Title is required.", Severity.Warning); return; }
-
+        if (string.IsNullOrWhiteSpace(_book.Title)) { Snackbar.Add("Title required.", Severity.Warning); return; }
         _saving = true;
         try
         {
-            if (ExistingBook == null) await BookService.CreateBookAsync(_book);
-            else await BookService.UpdateBookAsync(_book);
+            if (ExistingBook == null) await BookService.CreateBookAsync(_book); else await BookService.UpdateBookAsync(_book);
             MudDialog.Close(DialogResult.Ok(_book));
         }
         catch (Exception ex) { Snackbar.Add($"Error: {ex.Message}", Severity.Error); }

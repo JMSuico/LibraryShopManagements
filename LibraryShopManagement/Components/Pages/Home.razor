@@ -1,26 +1,51 @@
 ﻿@page "/home"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 
 <PageTitle>Home — Library Shop</PageTitle>
 
 <MudContainer MaxWidth="MaxWidth.Large">
-    <MudStack AlignItems="AlignItems.Center" Class="py-10" Spacing="4">
-        <MudAvatar Style="background:linear-gradient(135deg,#FFA07A,#87CEEB);width:80px;height:80px;">
-            <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="color:white;font-size:2.5rem;" />
+    <MudStack AlignItems="AlignItems.Center" Class="py-12" Spacing="4">
+
+        @* Cosmic logo orb *@
+        <MudAvatar Color="Color.Primary"
+                   Style="width:96px;height:96px;
+                          border:2px solid var(--clr-primary);
+                          box-shadow:var(--clr-primary-glow);">
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories"
+                     Style="font-size:2.8rem;color:var(--clr-primary-contrast);" />
         </MudAvatar>
-        <MudText Typo="Typo.h4" Style="color:#FFA07A;font-weight:700;">Welcome to Library Shop</MudText>
-        <MudText Typo="Typo.body1" Color="Color.Secondary" Align="Align.Center" Style="max-width:480px;">
+
+        <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Default"
+                 Style="font-weight:700;letter-spacing:.02em;">
+            Welcome to
+            <MudText Typo="Typo.h3" Inline="true" Color="Color.Primary"
+                     Style="font-weight:700;">
+                Library Shop
+            </MudText>
+        </MudText>
+
+        <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Secondary"
+                 Style="max-width:480px;line-height:1.7;color:var(--clr-text-muted);">
             Manage your library inventory and users with ease.
         </MudText>
+
         <MudStack Row Spacing="3" Class="mt-4" Wrap="Wrap.Wrap" Justify="Justify.Center">
             <MudButton Href="/dashboard" Variant="Variant.Filled" Color="Color.Primary"
                        StartIcon="@Icons.Material.Filled.Dashboard"
-                       Style="border-radius:8px;font-weight:600;">Dashboard</MudButton>
+                       Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                Dashboard
+            </MudButton>
             <MudButton Href="/books" Variant="Variant.Outlined" Color="Color.Primary"
-                       StartIcon="@Icons.Material.Filled.MenuBook"
-                       Style="border-radius:8px;font-weight:600;">Manage Books</MudButton>
+                       StartIcon="@Icons.Material.Filled.AutoStories"
+                       Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                Manage Books
+            </MudButton>
             <MudButton Href="/users" Variant="Variant.Outlined" Color="Color.Secondary"
                        StartIcon="@Icons.Material.Filled.People"
-                       Style="border-radius:8px;font-weight:600;">Manage Users</MudButton>
+                       Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                Manage Users
+            </MudButton>
         </MudStack>
     </MudStack>
 </MudContainer>

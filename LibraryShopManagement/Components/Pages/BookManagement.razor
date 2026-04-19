@@ -1,4 +1,6 @@
 ﻿@page "/books"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
 @inject IBookService BookService
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
@@ -6,17 +8,18 @@
 <PageTitle>Book Management — Library Shop</PageTitle>
 
 <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-5">
-    <MudText Typo="Typo.h5" Style="color:#87CEEB;font-weight:700;">
-        <MudIcon Icon="@Icons.Material.Filled.MenuBook" Class="mr-2" />Book Management
+    <MudText Typo="Typo.h5" Color="Color.Secondary" Style="font-weight:700;">
+        <MudIcon Icon="@Icons.Material.Filled.AutoStories" Class="mr-2" Color="Color.Secondary" />
+        Book Management
     </MudText>
     <MudButton Variant="Variant.Filled" Color="Color.Secondary"
                StartIcon="@Icons.Material.Filled.Add"
-               OnClick="OpenAdd" Style="border-radius:8px;font-weight:600;color:#1A3A4A;">
+               OnClick="OpenAdd" Style="border-radius:10px;font-weight:600;">
         Add Book
     </MudButton>
 </MudStack>
 
-<MudPaper Elevation="2" Class="rounded-xl overflow-hidden">
+<MudPaper Elevation="3" Class="rounded-xl overflow-hidden">
     <MudTable T="Book" @ref="_table" ServerData="LoadBooks" Hover Dense Striped
               Loading="_loading" LoadingProgressColor="Color.Secondary"
               SortLabel="Sort By" Breakpoint="Breakpoint.Sm">
@@ -26,8 +29,7 @@
                           AdornmentColor="Color.Secondary" Variant="Variant.Outlined"
                           Immediate="true" DebounceInterval="300"
                           Clearable Style="max-width:360px;" Class="mt-0"
-                          OnKeyUp="OnSearchKeyUp"
-                          OnClearButtonClick="ClearSearch" />
+                          OnKeyUp="OnSearchKeyUp" OnClearButtonClick="ClearSearch" />
         </ToolBarContent>
         <HeaderContent>
             <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Id">ID</MudTableSortLabel></MudTh>
@@ -39,48 +41,57 @@
             <MudTh Style="text-align:center;">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="ID">@context.Id</MudTd>
+            <MudTd DataLabel="ID">
+                <MudText Typo="Typo.body2" Color="Color.Default">@context.Id</MudText>
+            </MudTd>
             <MudTd DataLabel="Cover">
                 @if (!string.IsNullOrEmpty(context.CoverImage))
                 {
-                    <MudAvatar Style="width:34px;height:34px;border-radius:4px;">
+                    <MudAvatar Color="Color.Secondary" Style="width:34px;height:34px;border-radius:4px;">
                         <MudImage Src="@context.CoverImage" Style="width:100%;height:100%;object-fit:cover;" />
                     </MudAvatar>
                 }
                 else
                 {
-                    <MudAvatar Style="background:#D6EFFA;color:#1A5C7A;width:34px;height:34px;border-radius:4px;font-size:.8rem;">
+                    <MudAvatar Color="Color.Secondary" Style="width:34px;height:34px;border-radius:4px;font-size:.8rem;">
                         @(context.Title.Length > 0 ? context.Title[..1].ToUpper() : "?")
                     </MudAvatar>
                 }
             </MudTd>
-            <MudTd DataLabel="Title"><MudText Style="font-weight:500;">@context.Title</MudText></MudTd>
-            <MudTd DataLabel="Author">@context.Author</MudTd>
+            <MudTd DataLabel="Title">
+                <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:500;">@context.Title</MudText>
+            </MudTd>
+            <MudTd DataLabel="Author">
+                <MudText Typo="Typo.body2" Color="Color.Secondary">@context.Author</MudText>
+            </MudTd>
             <MudTd DataLabel="Price">
-                <MudText Style="color:#FFA07A;font-weight:600;">&#8369;@context.Price.ToString("F2")</MudText>
+                <MudText Typo="Typo.body2" Color="Color.Primary" Style="font-weight:600;">
+                    &#8369;@context.Price.ToString("F2")
+                </MudText>
             </MudTd>
             <MudTd DataLabel="Stock">
                 <MudChip T="string" Size="Size.Small"
-                         Style="@(context.Stock < 5 ? "background:#FFEBEE;color:#C62828;" : "background:#E8F5E9;color:#2E6B2E;")">
+                         Class="@(context.Stock < 5 ? "chip-stock-low" : "chip-stock-ok")">
                     @context.Stock
                 </MudChip>
             </MudTd>
             <MudTd DataLabel="Actions" Style="text-align:center;white-space:nowrap;">
                 <MudIconButton Icon="@Icons.Material.Filled.Visibility"
                                Color="Color.Secondary" Size="Size.Small"
-                               OnClick="@(() => OpenView(context))" Title="View" />
+                               OnClick="@(() => OpenView(context))" aria-label="View" />
                 <MudIconButton Icon="@Icons.Material.Filled.Edit"
                                Color="Color.Primary" Size="Size.Small"
-                               OnClick="@(() => OpenEdit(context))" Title="Edit" />
+                               OnClick="@(() => OpenEdit(context))" aria-label="Edit" />
                 <MudIconButton Icon="@Icons.Material.Filled.Delete"
                                Color="Color.Error" Size="Size.Small"
-                               OnClick="@(() => OpenDelete(context))" Title="Delete" />
+                               OnClick="@(() => OpenDelete(context))" aria-label="Delete" />
             </MudTd>
         </RowTemplate>
         <PagerContent><MudTablePager PageSizeOptions="new int[] { 10, 25, 50 }" /></PagerContent>
         <NoRecordsContent>
             <MudStack AlignItems="AlignItems.Center" Class="pa-6">
-                <MudIcon Icon="@Icons.Material.Filled.MenuBook" Style="font-size:3rem;color:#D6EFFA;" />
+                <MudIcon Icon="@Icons.Material.Filled.AutoStories"
+                         Color="Color.Secondary" Style="font-size:3rem;opacity:.4;" />
                 <MudText Color="Color.Secondary">No books found.</MudText>
             </MudStack>
         </NoRecordsContent>
@@ -104,7 +115,6 @@
     private Task<TableData<Book>> LoadBooks(TableState state, CancellationToken ct)
     {
         var query = _allBooks.AsQueryable();
-
         if (!string.IsNullOrWhiteSpace(_search))
         {
             var s = _search.Trim().ToLower();
@@ -113,7 +123,6 @@
                 b.Title.ToLower().Contains(s) ||
                 b.Author.ToLower().Contains(s));
         }
-
         query = state.SortLabel switch
         {
             "b => b.Id" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Id) : query.OrderBy(b => b.Id),
@@ -123,28 +132,19 @@
             "b => b.Stock" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Stock) : query.OrderBy(b => b.Stock),
             _ => query.OrderBy(b => b.Id)
         };
-
         var total = query.Count();
         var items = query.Skip(state.Page * state.PageSize).Take(state.PageSize).ToList();
         return Task.FromResult(new TableData<Book> { Items = items, TotalItems = total });
     }
 
-    private async Task OnSearchKeyUp(KeyboardEventArgs e)
-    {
-        if (_table != null) await _table.ReloadServerData();
-    }
-
-    private async Task ClearSearch()
-    {
-        _search = string.Empty;
-        if (_table != null) await _table.ReloadServerData();
-    }
+    private async Task OnSearchKeyUp(KeyboardEventArgs e) { if (_table != null) await _table.ReloadServerData(); }
+    private async Task ClearSearch() { _search = string.Empty; if (_table != null) await _table.ReloadServerData(); }
 
     private async Task Reload()
     {
         _loading = true;
         try { _allBooks = (await BookService.GetBooksAsync()).ToList(); }
-        catch (Exception ex) { Snackbar.Add($"Failed to load: {ex.Message}", Severity.Error); }
+        catch (Exception ex) { Snackbar.Add($"Failed: {ex.Message}", Severity.Error); }
         _loading = false;
         if (_table != null) await _table.ReloadServerData();
     }
@@ -175,8 +175,7 @@
 
     private async Task OpenDelete(Book book)
     {
-        var p = new DialogParameters<ConfirmDialog>
-                   { { x => x.Message, $"Do you want to delete \"{book.Title}\"?" } };
+        var p = new DialogParameters<ConfirmDialog> { { x => x.Message, $"Do you want to delete \"{book.Title}\"?" } };
         var opts = new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
         var dlg = await DialogService.ShowAsync<ConfirmDialog>("Confirm Delete", p, opts);
         var res = await dlg.Result;
