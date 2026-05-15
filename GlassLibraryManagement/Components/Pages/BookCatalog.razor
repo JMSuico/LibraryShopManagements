@@ -1,0 +1,172 @@
+@page "/catalog"
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@implements IDisposable
+@attribute [Authorize(Roles = "Admin,Librarian,Student")]
+@inject IBookService BookService
+@inject IUserService UserService
+@inject IReservationService ReservationService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<PageTitle>Book Catalog - Glass Library Management</PageTitle>
+
+<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-5" Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.MenuBook" Class="mr-2" Color="Color.Primary" />
+    Book Catalog
+</MudText>
+
+<MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
+    <MudTable Items="_books" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="10">
+        <HeaderContent>
+            <MudTh>Main ID</MudTh>
+            <MudTh>Title</MudTh>
+            <MudTh>Author</MudTh>
+            <MudTh>Available</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh Style="width:140px;text-align:right;">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.MainId</MudTd>
+            <MudTd>@context.Title</MudTd>
+            <MudTd>@context.Author</MudTd>
+            <MudTd>@context.Quantity</MudTd>
+            <MudTd>@context.Status</MudTd>
+            <MudTd Style="text-align:right;">
+                <MudTooltip Text="View details">
+                    <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Primary" Size="Size.Small"
+                                   OnClick="@(() => OpenViewAsync(context.Id))" />
+                </MudTooltip>
+                <MudTooltip Text="Reserve copies">
+                    <MudIconButton Icon="@Icons.Material.Filled.BookmarkAdd" Color="Color.Secondary" Size="Size.Small"
+                                   OnClick="@(() => OpenReserveDialogAsync(context))" />
+                </MudTooltip>
+            </MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private List<Book> _books = [];
+    private User? _currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+        await RefreshPatronAsync();
+        await Reload();
+    }
+
+    public void Dispose()
+    {
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
+
+    private async void OnAuthenticationStateChanged(Task _)
+    {
+        await RefreshPatronAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    /// <summary>
+    /// Ensures we have a DB-backed user id for reservations. Uses the auth provider first, then claims + lookup
+    /// so students are not blocked when the scoped provider and render timing are briefly out of sync.
+    /// </summary>
+    private async Task RefreshPatronAsync()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        _currentUser = provider.CurrentUser;
+
+        if (_currentUser != null)
+        {
+            return;
+        }
+
+        var state = await AuthStateProvider.GetAuthenticationStateAsync();
+        if (state.User.Identity?.IsAuthenticated != true)
+        {
+            return;
+        }
+
+        var idClaim = state.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (int.TryParse(idClaim, out var idFromClaim) && idFromClaim > 0)
+        {
+            _currentUser = await UserService.GetUserByIdAsync(idFromClaim);
+            if (_currentUser != null)
+            {
+                return;
+            }
+        }
+
+        var username = state.User.Identity?.Name ?? state.User.FindFirstValue(ClaimTypes.Name);
+        if (!string.IsNullOrWhiteSpace(username))
+        {
+            _currentUser = await UserService.GetUserByUsernameAsync(username);
+        }
+    }
+
+    private async Task Reload()
+    {
+        try
+        {
+            _books = (await BookService.GetBooksAsync()).OrderBy(b => b.Title).ToList();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load catalog: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task OpenViewAsync(int bookId)
+    {
+        var book = await BookService.GetBookByIdAsync(bookId);
+        if (book == null)
+        {
+            Snackbar.Add("Book not found.", Severity.Warning);
+            return;
+        }
+
+        var parameters = new DialogParameters<BookViewDialog> { { x => x.Book, book } };
+        await DialogService.ShowAsync<BookViewDialog>("Book details", parameters, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Medium, FullWidth = true });
+    }
+
+    private async Task OpenReserveDialogAsync(Book book)
+    {
+        await RefreshPatronAsync();
+
+        if (_currentUser == null)
+        {
+            Snackbar.Add("Could not resolve your account. Please sign out and sign in again, then try reserving.", Severity.Warning);
+            return;
+        }
+
+        var parameters = new DialogParameters<BookCatalogReserveDialog>
+        {
+            { x => x.Book, book },
+            { x => x.UserId, _currentUser.Id }
+        };
+
+        var dialog = await DialogService.ShowAsync<BookCatalogReserveDialog>(
+            string.Empty,
+            parameters,
+            new DialogOptions
+            {
+                CloseButton = true,
+                MaxWidth = MaxWidth.Small,
+                FullWidth = true,
+                NoHeader = false,
+                BackdropClick = false
+            });
+
+        var result = await dialog.Result;
+        if (result is { Canceled: false })
+        {
+            Snackbar.Add("Reservation saved.", Severity.Success);
+            await Reload();
+        }
+    }
+}

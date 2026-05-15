@@ -1,0 +1,167 @@
+@page "/users"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+@inject IUserService UserService
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<PageTitle>User Management - Glass Library Management</PageTitle>
+
+<MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-5">
+    <MudText Typo="Typo.h5" Color="Color.Primary" Style="font-weight:700;">
+        <MudIcon Icon="@Icons.Material.Filled.People" Class="mr-2" Color="Color.Primary" />
+        User Management
+    </MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary"
+               StartIcon="@Icons.Material.Filled.PersonAdd"
+               OnClick="OpenAdd" Style="border-radius:10px;font-weight:600;">
+        Add User
+    </MudButton>
+</MudStack>
+
+<MudPaper Elevation="3" Class="rounded-xl overflow-hidden">
+    <MudTable T="User" @ref="_table" ServerData="LoadUsers" Hover Dense Striped Loading="_loading">
+        <ToolBarContent>
+            <MudTextField @bind-Value="_search" Placeholder="Search name, username, role..."
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+                          Variant="Variant.Outlined" Immediate="true" DebounceInterval="300"
+                          Clearable OnKeyUp="OnSearchKeyUp" OnClearButtonClick="ClearSearch" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Username</MudTh>
+            <MudTh>Email</MudTh>
+            <MudTh>Address</MudTh>
+            <MudTh>Role</MudTh>
+            <MudTh Style="text-align:center;">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Id</MudTd>
+            <MudTd>@context.FullName</MudTd>
+            <MudTd>@context.Username</MudTd>
+            <MudTd>@context.Email</MudTd>
+            <MudTd>@(string.IsNullOrWhiteSpace(context.Address) ? "-" : context.Address)</MudTd>
+            <MudTd>
+                <MudChip T="string" Size="Size.Small" Class="@RoleChipClass(context.Role)">@context.Role</MudChip>
+            </MudTd>
+            <MudTd Style="text-align:center;white-space:nowrap;">
+                <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Secondary" Size="Size.Small" OnClick="@(() => OpenView(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => OpenEdit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => OpenDelete(context))" />
+            </MudTd>
+        </RowTemplate>
+        <PagerContent><MudTablePager PageSizeOptions="new int[] { 10, 25, 50 }" /></PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private MudTable<User>? _table;
+    private List<User> _allUsers = [];
+    private string _search = string.Empty;
+    private bool _loading = true;
+
+    protected override async Task OnInitializedAsync() => await Reload();
+
+    private Task<TableData<User>> LoadUsers(TableState state, CancellationToken ct)
+    {
+        var query = _allUsers.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(_search))
+        {
+            var s = _search.Trim().ToLowerInvariant();
+            query = query.Where(u =>
+                u.Id.ToString().Contains(s) ||
+                u.FullName.ToLower().Contains(s) ||
+                u.Username.ToLower().Contains(s) ||
+                u.Email.ToLower().Contains(s) ||
+                u.Role.ToString().ToLower().Contains(s));
+        }
+
+        var total = query.Count();
+        var items = query.Skip(state.Page * state.PageSize).Take(state.PageSize).ToList();
+        return Task.FromResult(new TableData<User> { Items = items, TotalItems = total });
+    }
+
+    private async Task Reload()
+    {
+        _loading = true;
+        try
+        {
+            _allUsers = (await UserService.GetUsersAsync()).ToList();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load users: {ex.Message}", Severity.Error);
+        }
+        _loading = false;
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task OnSearchKeyUp(KeyboardEventArgs e)
+    {
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task ClearSearch()
+    {
+        _search = string.Empty;
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task OpenView(User user)
+    {
+        var p = new DialogParameters<UserViewDialog> { { x => x.User, user } };
+        await DialogService.ShowAsync<UserViewDialog>("User Details", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall, FullWidth = true });
+    }
+
+    private async Task OpenAdd()
+    {
+        var dlg = await DialogService.ShowAsync<UserFormDialog>("Add User", new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            Snackbar.Add("User created.", Severity.Success);
+            await Reload();
+        }
+    }
+
+    private async Task OpenEdit(User user)
+    {
+        var p = new DialogParameters<UserFormDialog> { { x => x.ExistingUser, user } };
+        var dlg = await DialogService.ShowAsync<UserFormDialog>("Edit User", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            Snackbar.Add("User updated.", Severity.Success);
+            await Reload();
+        }
+    }
+
+    private async Task OpenDelete(User user)
+    {
+        var p = new DialogParameters<ConfirmDialog> { { x => x.Message, $"Do you want to delete '{user.FullName}'?" } };
+        var dlg = await DialogService.ShowAsync<ConfirmDialog>("Confirm Delete", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            try
+            {
+                await UserService.DeleteUserAsync(user.Id);
+                Snackbar.Add("User deleted.", Severity.Info);
+                await Reload();
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+            }
+        }
+    }
+
+    private static string RoleChipClass(RoleType role) => role switch
+    {
+        RoleType.Admin => "chip-role-admin",
+        RoleType.Librarian => "chip-role-staff",
+        RoleType.Student => "chip-role-customer",
+        _ => string.Empty
+    };
+}

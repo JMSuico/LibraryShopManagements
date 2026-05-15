@@ -1,0 +1,372 @@
+@page "/dashboard"
+@using Microsoft.AspNetCore.Authorization
+@using GlassLibraryManagement.Components.Shared
+@attribute [Authorize]
+@inject IUserService UserService
+@inject IBookService BookService
+@inject IBorrowService BorrowService
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+<PageTitle>Dashboard - Glass Library Management</PageTitle>
+
+<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-6"
+         Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.Dashboard" Class="mr-2" Color="Color.Primary" />
+    Dashboard
+</MudText>
+
+@if (_loading)
+{
+    <MudProgressLinear Indeterminate Color="Color.Primary" Class="mb-4" />
+}
+else
+{
+    <MudGrid Spacing="4" Class="mb-6">
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <div>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Total Users</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Primary" Style="font-weight:700;">@_totalUsers</MudText>
+                    </div>
+                    <MudAvatar Color="Color.Primary" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.People" Color="Color.Inherit" />
+                    </MudAvatar>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <div>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Total Books</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Secondary" Style="font-weight:700;">@_totalBooks</MudText>
+                    </div>
+                    <MudAvatar Color="Color.Secondary" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.AutoStories" Color="Color.Inherit" />
+                    </MudAvatar>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <div>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Available Quantity</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Success" Style="font-weight:700;">@_availableQuantity</MudText>
+                    </div>
+                    <MudAvatar Color="Color.Success" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.Inventory" Color="Color.Inherit" />
+                    </MudAvatar>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="pa-5 cursor-pointer" @onclick="OpenActiveBorrowsDialog">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <div>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Active Borrows</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Warning" Style="font-weight:700;">@_activeBorrows</MudText>
+                    </div>
+                    <MudAvatar Color="Color.Warning" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.LibraryBooks" Color="Color.Inherit" />
+                    </MudAvatar>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="pa-5 cursor-pointer" @onclick="OpenReturnsDialog">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                    <div>
+                        <MudText Typo="Typo.overline" Style="color:var(--clr-text-muted);">Books Returned</MudText>
+                        <MudText Typo="Typo.h4" Color="Color.Success" Style="font-weight:700;">@_booksReturned</MudText>
+                    </div>
+                    <MudAvatar Color="Color.Success" Style="width:52px;height:52px;opacity:.85;">
+                        <MudIcon Icon="@Icons.Material.Filled.AssignmentReturn" Color="Color.Inherit" />
+                    </MudAvatar>
+                </MudStack>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudGrid Spacing="4">
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-3">
+                    <MudText Typo="Typo.h6" Color="Color.Primary" Style="font-weight:600;">
+                        <MudIcon Icon="@Icons.Material.Filled.PieChart" Class="mr-1" Color="Color.Primary" />
+                        Statistics Overview
+                    </MudText>
+                    <MudSelect T="string" @bind-Value="_selectedLegend" Variant="Variant.Outlined" Margin="Margin.Dense" Style="max-width: 200px;">
+                        <MudSelectItem Value="@("All Legends")">All Legends</MudSelectItem>
+                        <MudSelectItem Value="@("Books Added")">Books Added</MudSelectItem>
+                        <MudSelectItem Value="@("Overdue")">Overdue</MudSelectItem>
+                        <MudSelectItem Value="@("Returns")">Returns</MudSelectItem>
+                        <MudSelectItem Value="@("Active Members")">Active Members</MudSelectItem>
+                    </MudSelect>
+                </MudStack>
+                <MudTabs Elevation="0" Rounded="true" Color="Color.Primary" Centered="true" ActivePanelIndexChanged="OnTabChanged">
+                    <MudTabPanel Text="All Time" />
+                    <MudTabPanel Text="Yearly" />
+                    <MudTabPanel Text="Monthly" />
+                    <MudTabPanel Text="Weekly" />
+                    <MudTabPanel Text="Today" />
+                </MudTabs>
+                
+                <div class="d-flex justify-center mt-4" style="width: 100%;">
+                    @if (_chartSeries.Count > 0 && _chartSeries.Any(s => s.Data.Sum() > 0))
+                    {
+                        <MudChart ChartType="ChartType.Bar" ChartSeries="@_chartSeries" XAxisLabels="@_chartLabels" Width="100%" Height="300px" />
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.body2" Color="Color.Secondary" Class="mt-8 mb-8">No data available for this timeframe.</MudText>
+                    }
+                </div>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudText Typo="Typo.h6" Color="Color.Primary" Class="mb-3" Style="font-weight:600;">
+                    <MudIcon Icon="@Icons.Material.Filled.LibraryAdd" Class="mr-1" Color="Color.Primary" />
+                    Recent Transactions
+                </MudText>
+                <MudDivider Class="mb-3" />
+                @foreach (var t in _recentTransactions)
+                {
+                    <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
+                        <div>
+                            <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:600;">
+                                @(t.User?.FullName ?? "Unknown User")
+                            </MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                                @(t.Book?.Title ?? "Unknown Book")
+                            </MudText>
+                        </div>
+                        <MudChip T="string" Size="Size.Small" Color="@StatusColor(t.Status)">
+                            @t.Status
+                        </MudChip>
+                    </MudStack>
+                }
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="3" Class="pa-5">
+                <MudText Typo="Typo.h6" Color="Color.Secondary" Class="mb-3" Style="font-weight:600;">
+                    <MudIcon Icon="@Icons.Material.Filled.AutoStories" Class="mr-1" Color="Color.Secondary" />
+                    Recent Books
+                </MudText>
+                <MudDivider Class="mb-3" />
+                @foreach (var b in _recentBooks)
+                {
+                    <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-2">
+                        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+                            <MudAvatar Color="Color.Secondary" Style="width:36px;height:36px;border-radius:4px;font-size:.75rem;">
+                                @(b.Title.Length > 0 ? b.Title[..1].ToUpper() : "?")
+                            </MudAvatar>
+                            <div>
+                                <MudText Typo="Typo.body2" Color="Color.Default" Style="font-weight:600;">@b.Title</MudText>
+                                <MudText Typo="Typo.caption" Color="Color.Secondary">@b.Author</MudText>
+                            </div>
+                        </MudStack>
+                        <MudChip T="string" Size="Size.Small" Color="Color.Secondary">
+                            Qty: @b.Quantity
+                        </MudChip>
+                    </MudStack>
+                }
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+}
+
+@code {
+    private bool _loading = true;
+    private int _totalUsers;
+    private int _totalBooks;
+    private int _availableQuantity;
+    private int _activeBorrows;
+    private int _booksReturned;
+    private List<Book> _recentBooks = [];
+    private List<BorrowTransaction> _recentTransactions = [];
+
+    // All data
+    private List<User> _allUsers = [];
+    private List<Book> _allBooks = [];
+    private List<BorrowTransaction> _allTransactions = [];
+
+    // Bar chart data
+    private int _currentTabIndex = 0;
+    private string _selectedLegend = "All Legends";
+    private List<ChartSeries<double>> _chartSeries = [];
+    private string[] _chartLabels = [];
+    private string _lastSelectedLegend = "All Legends";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _allUsers = (await UserService.GetUsersAsync()).ToList();
+            _allBooks = (await BookService.GetBooksAsync()).ToList();
+            _allTransactions = (await BorrowService.GetTransactionsAsync()).ToList();
+
+            _totalUsers = _allUsers.Count;
+            _totalBooks = _allBooks.Count;
+            _availableQuantity = _allBooks.Sum(b => b.Quantity);
+            _activeBorrows = _allTransactions.Count(t => t.ReturnedAt == null);
+            _booksReturned = _allTransactions.Count(t => t.ReturnedAt != null);
+            
+            _recentBooks = _allBooks.TakeLast(5).ToList();
+            _recentTransactions = _allTransactions.Take(5).ToList();
+
+            UpdateBarChart();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error loading dashboard: {ex.Message}", Severity.Error);
+        }
+
+        _loading = false;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (_lastSelectedLegend != _selectedLegend)
+        {
+            _lastSelectedLegend = _selectedLegend;
+            UpdateBarChart();
+            StateHasChanged();
+        }
+    }
+
+    private void OnTabChanged(int index)
+    {
+        _currentTabIndex = index;
+        UpdateBarChart();
+    }
+
+    private void UpdateBarChart()
+    {
+        var localNow = DateTime.UtcNow.ToLocalTime();
+        _chartSeries.Clear();
+
+        if (_currentTabIndex == 0) // All Time
+        {
+            _chartLabels = ["This Year", "This Month", "This Week", "Today"];
+        }
+        else if (_currentTabIndex == 1) // Yearly
+        {
+            _chartLabels = [ (localNow.Year - 3).ToString(), (localNow.Year - 2).ToString(), (localNow.Year - 1).ToString(), localNow.Year.ToString() ];
+        }
+        else if (_currentTabIndex == 2) // Monthly
+        {
+            _chartLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        }
+        else if (_currentTabIndex == 3) // Weekly
+        {
+            _chartLabels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        }
+        else if (_currentTabIndex == 4) // Today
+        {
+            _chartLabels = ["7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
+        }
+
+        var metricsToCompute = _selectedLegend == "All Legends" 
+            ? new[] { "Books Added", "Overdue", "Returns", "Active Members" }
+            : new[] { _selectedLegend };
+
+        foreach (var metric in metricsToCompute)
+        {
+            var data = new double[_chartLabels.Length];
+            for (int i = 0; i < _chartLabels.Length; i++)
+            {
+                data[i] = ComputeMetricForLabel(metric, _currentTabIndex, i, localNow);
+            }
+            _chartSeries.Add(new ChartSeries<double> { Name = metric, Data = data });
+        }
+    }
+
+    private (DateTime start, DateTime end) GetDateRange(int tabIndex, int labelIndex, DateTime localNow)
+    {
+        var now = localNow;
+        if (tabIndex == 0) // All Time
+        {
+            if (labelIndex == 0) return (new DateTime(now.Year, 1, 1), now);
+            if (labelIndex == 1) return (new DateTime(now.Year, now.Month, 1), now);
+            if (labelIndex == 2) 
+            {
+                var diff = (7 + (now.DayOfWeek - DayOfWeek.Monday)) % 7;
+                var startOfWeek = now.Date.AddDays(-1 * diff);
+                return (startOfWeek, now);
+            }
+            if (labelIndex == 3) return (now.Date, now);
+        }
+        else if (tabIndex == 1) // Yearly
+        {
+            int year = now.Year - 3 + labelIndex;
+            return (new DateTime(year, 1, 1), new DateTime(year, 12, 31, 23, 59, 59));
+        }
+        else if (tabIndex == 2) // Monthly
+        {
+            int month = labelIndex + 1;
+            var start = new DateTime(now.Year, month, 1);
+            var end = start.AddMonths(1).AddTicks(-1);
+            return (start, end);
+        }
+        else if (tabIndex == 3) // Weekly
+        {
+            var diff = (7 + (now.DayOfWeek - DayOfWeek.Monday)) % 7;
+            var startOfWeek = now.Date.AddDays(-1 * diff);
+            var dayStart = startOfWeek.AddDays(labelIndex);
+            return (dayStart, dayStart.AddDays(1).AddTicks(-1));
+        }
+        else if (tabIndex == 4) // Today
+        {
+            int hour = 7 + labelIndex; 
+            var start = now.Date.AddHours(hour);
+            return (start, start.AddHours(1).AddTicks(-1));
+        }
+        
+        return (DateTime.MinValue, DateTime.MaxValue);
+    }
+
+    private double ComputeMetricForLabel(string metric, int tabIndex, int labelIndex, DateTime localNow)
+    {
+        var (localStart, localEnd) = GetDateRange(tabIndex, labelIndex, localNow);
+        if (localStart == DateTime.MinValue) return 0;
+
+        var start = localStart.ToUniversalTime();
+        var end = localEnd.ToUniversalTime();
+
+        return metric switch
+        {
+            "Books Added" => _allBooks.Count(b => b.CreatedAt >= start && b.CreatedAt <= end),
+            "Overdue" => _allTransactions.Count(t => t.Status == TransactionStatus.Overdue && t.DueAt >= start && t.DueAt <= end),
+            "Returns" => _allTransactions.Count(t => t.ReturnedAt != null && t.ReturnedAt >= start && t.ReturnedAt <= end),
+            "Active Members" => _allUsers.Count(u => u.CreatedAt >= start && u.CreatedAt <= end),
+            _ => 0
+        };
+    }
+
+    private async Task OpenActiveBorrowsDialog()
+    {
+        var activeBorrows = _allTransactions.Where(t => t.ReturnedAt == null).ToList();
+        var parameters = new DialogParameters { ["Transactions"] = activeBorrows };
+        await DialogService.ShowAsync<TransactionListDialog>("Borrows Being Borrowed", parameters, new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true });
+    }
+
+    private async Task OpenReturnsDialog()
+    {
+        var returns = _allTransactions.Where(t => t.ReturnedAt != null).ToList();
+        var parameters = new DialogParameters { ["Transactions"] = returns };
+        await DialogService.ShowAsync<TransactionListDialog>("Books Being Returned", parameters, new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true });
+    }
+
+    private static Color StatusColor(TransactionStatus status) => status switch
+    {
+        TransactionStatus.Returned => Color.Success,
+        TransactionStatus.Overdue => Color.Error,
+        _ => Color.Warning
+    };
+}

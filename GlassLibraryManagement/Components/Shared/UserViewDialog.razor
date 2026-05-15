@@ -1,0 +1,38 @@
+<MudDialog Style="min-width:400px;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+            <MudIcon Icon="@Icons.Material.Filled.AccountCircle" Color="Color.Primary" />
+            <MudText Typo="Typo.h6" Color="Color.Primary" Style="font-weight:700;">User Details</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        @if (User != null)
+        {
+            <MudStack Spacing="2">
+                <MudText Typo="Typo.h6" Color="Color.Default" Style="font-weight:700;">@User.FullName</MudText>
+                <MudChip T="string" Size="Size.Small" Class="@RoleChipClass(User.Role)">@User.Role</MudChip>
+                <MudDivider />
+                <MudText><strong>Username:</strong> @User.Username</MudText>
+                <MudText><strong>Email:</strong> @(string.IsNullOrWhiteSpace(User.Email) ? "-" : User.Email)</MudText>
+                <MudText><strong>Address:</strong> @(string.IsNullOrWhiteSpace(User.Address) ? "-" : User.Address)</MudText>
+                <MudText><strong>Borrow Limit:</strong> @User.BorrowLimit</MudText>
+            </MudStack>
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@(() => MudDialog.Cancel())">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public User? User { get; set; }
+
+    private static string RoleChipClass(RoleType role) => role switch
+    {
+        RoleType.Admin => "chip-role-admin",
+        RoleType.Librarian => "chip-role-staff",
+        RoleType.Student => "chip-role-customer",
+        _ => string.Empty
+    };
+}

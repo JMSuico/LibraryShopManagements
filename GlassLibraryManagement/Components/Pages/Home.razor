@@ -1,0 +1,96 @@
+@page "/home"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@inject AuthenticationStateProvider AuthStateProvider
+
+<PageTitle>Home - Glass Library Management</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudStack AlignItems="AlignItems.Center" Class="py-12" Spacing="4">
+        <MudAvatar Color="Color.Primary"
+                   Style="width:96px;height:96px;
+                          border:2px solid var(--clr-primary);
+                          box-shadow:var(--clr-primary-glow);">
+            <MudIcon Icon="@Icons.Material.Filled.LocalLibrary"
+                     Style="font-size:2.8rem;color:var(--clr-primary-contrast);" />
+        </MudAvatar>
+
+        <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Default"
+                 Style="font-weight:700;letter-spacing:.02em;">
+            Welcome to
+            <MudText Typo="Typo.h3" Inline="true" Color="Color.Primary"
+                     Style="font-weight:700;">
+                Glass Library Management
+            </MudText>
+        </MudText>
+
+        <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Secondary"
+                 Style="max-width:560px;line-height:1.7;color:var(--clr-text-muted);">
+            Browse the catalog, place reservations, and track your borrowings. Staff use Borrow and Return for loans and returns—a simple one-day loan window with automatic overdue status after the due date.
+        </MudText>
+
+        <MudStack Row Spacing="3" Class="mt-4" Wrap="Wrap.Wrap" Justify="Justify.Center">
+            <MudButton Href="/dashboard" Variant="Variant.Filled" Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.Dashboard"
+                       Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                Dashboard
+            </MudButton>
+            <MudButton Href="/catalog" Variant="Variant.Outlined" Color="Color.Primary"
+                       StartIcon="@Icons.Material.Filled.MenuBook"
+                       Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                Book Catalog
+            </MudButton>
+            @if (_isStaff)
+            {
+                <MudButton Href="/reservations" Variant="Variant.Text" Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Bookmark"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    Reservations
+                </MudButton>
+                <MudButton Href="/my-borrowings" Variant="Variant.Text" Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Person"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    My Borrowings
+                </MudButton>
+                <MudButton Href="/borrow-and-return" Variant="Variant.Outlined" Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.SwapHoriz"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    Borrow and Return
+                </MudButton>
+                <MudButton Href="/borrow" Variant="Variant.Outlined" Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.LibraryBooks"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    Borrow Logs
+                </MudButton>
+                <MudButton Href="/return" Variant="Variant.Outlined" Color="Color.Secondary"
+                           StartIcon="@Icons.Material.Filled.History"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    Return Logs
+                </MudButton>
+            }
+            else
+            {
+                <MudButton Href="/reservations" Variant="Variant.Outlined" Color="Color.Primary"
+                           StartIcon="@Icons.Material.Filled.Bookmark"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    Reservations
+                </MudButton>
+                <MudButton Href="/my-borrowings" Variant="Variant.Outlined" Color="Color.Secondary"
+                           StartIcon="@Icons.Material.Filled.Person"
+                           Style="border-radius:10px;font-weight:600;padding:10px 24px;">
+                    My Borrowings
+                </MudButton>
+            }
+        </MudStack>
+    </MudStack>
+</MudContainer>
+
+@code {
+    private bool _isStaff;
+
+    protected override void OnInitialized()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        _isStaff = provider.CurrentUser?.Role is RoleType.Admin or RoleType.Librarian;
+    }
+}

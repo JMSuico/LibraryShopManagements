@@ -1,0 +1,170 @@
+@inject IBookService BookService
+@inject ISnackbar Snackbar
+
+<MudDialog Style="min-width:460px;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Style="font-weight:700;">
+                @(ExistingBook == null ? "Add New Book" : "Edit Book")
+            </MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        <MudStack Spacing="3">
+            <MudTextField @bind-Value="_book.MainId" Label="Main ID" Variant="Variant.Outlined" Disabled="true" />
+            <MudTextField @bind-Value="_book.Title" Label="Title" Variant="Variant.Outlined" Immediate="true"
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AutoStories" AdornmentColor="Color.Secondary" />
+            <MudTextField @bind-Value="_book.Author" Label="Author" Variant="Variant.Outlined"
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Person" AdornmentColor="Color.Secondary" />
+            <MudNumericField @bind-Value="_book.TotalCopies" Label="Total Copies" Variant="Variant.Outlined" Min="0"
+                             Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Inventory" AdornmentColor="Color.Primary" />
+            @if (ExistingBook != null)
+            {
+                <MudGrid Spacing="2">
+                    <MudItem xs="12" sm="4">
+                        <MudAlert Severity="Severity.Info" Dense="true" Variant="Variant.Outlined">
+                            Available: @_book.AvailableCopies
+                        </MudAlert>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudAlert Severity="Severity.Warning" Dense="true" Variant="Variant.Outlined">
+                            Borrowed: @_book.BorrowedCopies
+                        </MudAlert>
+                    </MudItem>
+                    <MudItem xs="12" sm="4">
+                        <MudAlert Severity="Severity.Normal" Dense="true" Variant="Variant.Outlined">
+                            Reserved: @_book.ReservedCopies
+                        </MudAlert>
+                    </MudItem>
+                </MudGrid>
+            }
+            <InputFile id="book-cover-input" OnChange="UploadCover" accept="image/*" style="display:none;" />
+            <label for="book-cover-input" style="cursor:pointer;">
+                <MudButton HtmlTag="span" Variant="Variant.Outlined" Color="Color.Secondary"
+                           Size="Size.Small" StartIcon="@Icons.Material.Filled.Upload"
+                           Style="border-radius:6px;">Upload Cover</MudButton>
+            </label>
+
+            <MudText Typo="Typo.caption" Color="Color.Secondary">
+                Cover images are resized automatically before saving.
+            </MudText>
+
+            @if (!string.IsNullOrWhiteSpace(_book.CoverImage))
+            {
+                <MudPaper Class="pa-2 d-inline-flex" Outlined="true" Style="max-width:180px;">
+                    <MudImage Src="@_book.CoverImage" Alt="Book cover preview" Style="width:100%;border-radius:8px;" />
+                </MudPaper>
+            }
+            else
+            {
+                <MudAlert Severity="Severity.Info" Dense="true">
+                    No cover image selected yet.
+                </MudAlert>
+            }
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Submit" Disabled="_saving">
+            @if (_saving)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate />
+            }
+            else
+            {
+                <span>@(ExistingBook == null ? "Add Book" : "Save Changes")</span>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public Book? ExistingBook { get; set; }
+
+    private const long MaxCoverImageBytes = 512 * 1024;
+    private Book _book = new();
+    private bool _saving;
+
+    protected override void OnInitialized()
+    {
+        if (ExistingBook != null)
+        {
+            _book = new Book
+            {
+                Id = ExistingBook.Id,
+                MainId = ExistingBook.MainId,
+                Title = ExistingBook.Title,
+                Author = ExistingBook.Author,
+                TotalCopies = ExistingBook.TotalCopies,
+                AvailableCopies = ExistingBook.AvailableCopies,
+                BorrowedCopies = ExistingBook.BorrowedCopies,
+                ReservedCopies = ExistingBook.ReservedCopies,
+                Status = ExistingBook.Status,
+                CoverImage = ExistingBook.CoverImage
+            };
+        }
+    }
+
+    private async Task UploadCover(InputFileChangeEventArgs e)
+    {
+        try
+        {
+            var file = e.File;
+            var resizedFile = await file.RequestImageFileAsync("image/jpeg", 480, 720);
+            await using var stream = resizedFile.OpenReadStream(MaxCoverImageBytes);
+            using var memoryStream = new MemoryStream();
+            await stream.CopyToAsync(memoryStream);
+
+            if (memoryStream.Length == 0)
+            {
+                Snackbar.Add("Unable to read the selected image.", Severity.Warning);
+                return;
+            }
+
+            _book.CoverImage = $"data:image/jpeg;base64,{Convert.ToBase64String(memoryStream.ToArray())}";
+            Snackbar.Add("Cover image uploaded successfully.", Severity.Success);
+        }
+        catch
+        {
+            Snackbar.Add("Image is too large. Please use a smaller image.", Severity.Warning);
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (string.IsNullOrWhiteSpace(_book.Title) || string.IsNullOrWhiteSpace(_book.Author))
+        {
+            Snackbar.Add("Title and author are required.", Severity.Warning);
+            return;
+        }
+
+        _saving = true;
+        try
+        {
+            if (ExistingBook == null)
+            {
+                await BookService.CreateBookAsync(_book);
+            }
+            else
+            {
+                await BookService.UpdateBookAsync(_book);
+            }
+
+            MudDialog.Close(DialogResult.Ok(_book));
+        }
+        catch (Exception ex)
+        {
+            var message = ex.Message.Contains("max_allowed_packet", StringComparison.OrdinalIgnoreCase)
+                ? "Cover image is too large for the database. Please upload a smaller image."
+                : ex.Message;
+
+            Snackbar.Add($"Error: {message}", Severity.Error);
+        }
+        finally
+        {
+            _saving = false;
+        }
+    }
+}

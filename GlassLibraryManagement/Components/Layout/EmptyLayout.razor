@@ -1,0 +1,99 @@
+﻿@inherits LayoutComponentBase
+@inject IThemeService ThemeService
+
+<MudThemeProvider Theme="@_theme" IsDarkMode="@ThemeService.IsDarkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudMainContent Style="background:transparent;min-height:100vh;">
+        <MudContainer MaxWidth="MaxWidth.Small"
+                      Class="d-flex align-center justify-center"
+                      Style="min-height:100vh;padding:24px;">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ThemeService.InitializeAsync();
+            StateHasChanged();
+        }
+    }
+
+    // Same palette as MainLayout — EmptyLayout is a separate component instance
+    private readonly MudTheme _theme = new()
+    {
+        PaletteLight = new PaletteLight
+        {
+            Primary = "#8B5CF6",
+            PrimaryContrastText = "#FFFFFF",
+            PrimaryDarken = "#7C3AED",
+            PrimaryLighten = "#C4B5FD",
+            Secondary = "#06B6D4",
+            SecondaryContrastText = "#FFFFFF",
+            Tertiary = "#F472B6",
+            TertiaryContrastText = "#FFFFFF",
+            Error = "#EF4444",
+            ErrorContrastText = "#FFFFFF",
+            Success = "#10B981",
+            SuccessContrastText = "#FFFFFF",
+            Warning = "#F59E0B",
+            WarningContrastText = "#1A1A1A",
+            Background = "#F1F5FF",
+            BackgroundGray = "#EEF2FF",
+            Surface = "#FFFFFF",
+            AppbarBackground = "#EEF2FF",
+            AppbarText = "#1E1B4B",
+            DrawerBackground = "#F5F3FF",
+            DrawerText = "#374151",
+            DrawerIcon = "#8B5CF6",
+            TextPrimary = "#1E1B4B",
+            TextSecondary = "#4B5563",
+            TextDisabled = "#9CA3AF",
+            ActionDefault = "#8B5CF6",
+            Divider = "rgba(139,92,246,0.18)",
+            OverlayDark = "rgba(15,10,35,0.55)",
+        },
+        PaletteDark = new PaletteDark
+        {
+            Primary = "#8B5CF6",
+            PrimaryContrastText = "#FFFFFF",
+            PrimaryDarken = "#7C3AED",
+            PrimaryLighten = "#A78BFA",
+            Secondary = "#06B6D4",
+            SecondaryContrastText = "#FFFFFF",
+            Tertiary = "#F472B6",
+            TertiaryContrastText = "#1A0020",
+            Error = "#EF4444",
+            ErrorContrastText = "#FFFFFF",
+            Success = "#10B981",
+            SuccessContrastText = "#022C22",
+            Warning = "#F59E0B",
+            WarningContrastText = "#1A1A1A",
+            Background = "#0B0E14",
+            BackgroundGray = "#0F1018",
+            Surface = "rgba(255,255,255,0.05)",
+            AppbarBackground = "rgba(11,14,20,0.85)",
+            AppbarText = "#F1F5F9",
+            DrawerBackground = "rgba(15,10,30,0.90)",
+            DrawerText = "#CBD5E1",
+            DrawerIcon = "#A78BFA",
+            TextPrimary = "#F1F5F9",
+            TextSecondary = "#CBD5E1",
+            TextDisabled = "#4B5563",
+            ActionDefault = "#A78BFA",
+            Divider = "rgba(255,255,255,0.10)",
+            OverlayDark = "rgba(0,0,0,0.70)",
+        },
+        LayoutProperties = new LayoutProperties
+        {
+            DefaultBorderRadius = "10px",
+        }
+    };
+}

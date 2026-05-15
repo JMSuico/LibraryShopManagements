@@ -1,0 +1,249 @@
+@page "/books"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Librarian")]
+@inject IBookService BookService
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<PageTitle>Book Management - Glass Library Management</PageTitle>
+
+<MudStack Row AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween" Class="mb-5">
+    <MudText Typo="Typo.h5" Color="Color.Secondary" Style="font-weight:700;">
+        <MudIcon Icon="@Icons.Material.Filled.AutoStories" Class="mr-2" Color="Color.Secondary" />
+        Book Management
+    </MudText>
+    <MudButton Variant="Variant.Filled" Color="Color.Secondary"
+               StartIcon="@Icons.Material.Filled.Add"
+               OnClick="OpenAdd" Style="border-radius:10px;font-weight:600;">
+        Add Book
+    </MudButton>
+</MudStack>
+
+<MudPaper Elevation="3" Class="rounded-xl overflow-hidden">
+    <MudTable T="Book" @ref="_table" ServerData="LoadBooks" Hover Dense Striped
+              Loading="_loading" LoadingProgressColor="Color.Secondary"
+              SortLabel="Sort By" Breakpoint="Breakpoint.Sm">
+        <ToolBarContent>
+            <MudTextField @bind-Value="_search" Placeholder="Search main id, title or author..."
+                          Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search"
+                          AdornmentColor="Color.Secondary" Variant="Variant.Outlined"
+                          Immediate="true" DebounceInterval="300"
+                          Clearable Style="max-width:360px;" Class="mt-0"
+                          OnKeyUp="OnSearchKeyUp" OnClearButtonClick="ClearSearch" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Id">ID</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.MainId">Main ID</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Title">Title</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Author">Author</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.TotalCopies">Total</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.AvailableCopies">Available</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.BorrowedCopies">Borrowed</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.ReservedCopies">Reserved</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel T="Book" SortBy="b => b.Status">Status</MudTableSortLabel></MudTh>
+            <MudTh Style="text-align:center;">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>
+                <MudIconButton Icon="@(context.Id == _expandedBookId ? Icons.Material.Filled.ExpandLess : Icons.Material.Filled.ExpandMore)" 
+                               Color="Color.Primary" Size="Size.Small" OnClick="@(() => ToggleExpand(context.Id))" />
+            </MudTd>
+            <MudTd DataLabel="ID">@context.Id</MudTd>
+            <MudTd DataLabel="Main ID">@context.MainId</MudTd>
+            <MudTd DataLabel="Title">@context.Title</MudTd>
+            <MudTd DataLabel="Author">@context.Author</MudTd>
+            <MudTd DataLabel="Total">
+                <MudChip T="string" Size="Size.Small" Color="Color.Primary">
+                    @context.TotalCopies
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Available">
+                <MudChip T="string" Size="Size.Small" Color="@(context.AvailableCopies > 0 ? Color.Success : Color.Warning)">
+                    @context.AvailableCopies
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Borrowed">
+                <MudChip T="string" Size="Size.Small" Color="@(context.BorrowedCopies > 0 ? Color.Warning : Color.Default)">
+                    @context.BorrowedCopies
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Reserved">
+                <MudChip T="string" Size="Size.Small" Color="@(context.ReservedCopies > 0 ? Color.Secondary : Color.Default)">
+                    @context.ReservedCopies
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Status">
+                <MudChip T="string" Size="Size.Small" Color="@StatusColor(context.Status)">
+                    @context.Status
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:center;white-space:nowrap;">
+                <MudIconButton Icon="@Icons.Material.Filled.Visibility" Color="Color.Secondary" Size="Size.Small"
+                               OnClick="@(() => OpenView(context))" aria-label="View" />
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small"
+                               OnClick="@(() => OpenEdit(context))" aria-label="Edit" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small"
+                               OnClick="@(() => OpenDelete(context))" aria-label="Delete" />
+            </MudTd>
+        </RowTemplate>
+        <ChildRowContent>
+            @if (context.Id == _expandedBookId)
+            {
+                <td colspan="11">
+                    <MudCard Elevation="0" Class="pa-4" Style="background-color: var(--mud-palette-background-grey);">
+                        <MudText Typo="Typo.subtitle2" Class="mb-2"><strong>Main ID:</strong> @context.MainId Copies</MudText>
+                        <MudTable Items="@context.QRCodes" Context="copyContext" Dense="true" Hover="true" Elevation="0" Style="background:transparent;">
+                            <HeaderContent>
+                                <MudTh>Copy ID</MudTh>
+                                <MudTh>Availability</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@copyContext.CopyId</MudTd>
+                                <MudTd>
+                                    <MudChip T="string" Size="Size.Small" Color="@(copyContext.IsAvailable ? Color.Success : Color.Warning)">
+                                        @(copyContext.IsAvailable ? "Available" : "Checked Out/Reserved")
+                                    </MudChip>
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudCard>
+                </td>
+            }
+        </ChildRowContent>
+        <PagerContent><MudTablePager PageSizeOptions="new int[] { 10, 25, 50 }" /></PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private MudTable<Book>? _table;
+    private List<Book> _allBooks = [];
+    private string _search = string.Empty;
+    private bool _loading = true;
+    private int _expandedBookId = 0;
+
+    private void ToggleExpand(int bookId)
+    {
+        if (_expandedBookId == bookId)
+            _expandedBookId = 0;
+        else
+            _expandedBookId = bookId;
+    }
+
+    protected override async Task OnInitializedAsync() => await Reload();
+
+    private Task<TableData<Book>> LoadBooks(TableState state, CancellationToken ct)
+    {
+        var query = _allBooks.AsQueryable();
+        if (!string.IsNullOrWhiteSpace(_search))
+        {
+            var s = _search.Trim().ToLowerInvariant();
+            query = query.Where(b =>
+                b.Id.ToString().Contains(s) ||
+                b.MainId.ToLower().Contains(s) ||
+                b.Title.ToLower().Contains(s) ||
+                b.Author.ToLower().Contains(s));
+        }
+
+        query = state.SortLabel switch
+        {
+            "b => b.MainId" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.MainId) : query.OrderBy(b => b.MainId),
+            "b => b.Title" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Title) : query.OrderBy(b => b.Title),
+            "b => b.Author" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Author) : query.OrderBy(b => b.Author),
+            "b => b.TotalCopies" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.TotalCopies) : query.OrderBy(b => b.TotalCopies),
+            "b => b.AvailableCopies" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.AvailableCopies) : query.OrderBy(b => b.AvailableCopies),
+            "b => b.BorrowedCopies" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.BorrowedCopies) : query.OrderBy(b => b.BorrowedCopies),
+            "b => b.ReservedCopies" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.ReservedCopies) : query.OrderBy(b => b.ReservedCopies),
+            "b => b.Status" => state.SortDirection == SortDirection.Descending ? query.OrderByDescending(b => b.Status) : query.OrderBy(b => b.Status),
+            _ => query.OrderBy(b => b.Id)
+        };
+
+        var total = query.Count();
+        var items = query.Skip(state.Page * state.PageSize).Take(state.PageSize).ToList();
+        return Task.FromResult(new TableData<Book> { Items = items, TotalItems = total });
+    }
+
+    private async Task OnSearchKeyUp(KeyboardEventArgs e)
+    {
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task ClearSearch()
+    {
+        _search = string.Empty;
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task Reload()
+    {
+        _loading = true;
+        try
+        {
+            _allBooks = (await BookService.GetBooksAsync()).ToList();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load books: {ex.Message}", Severity.Error);
+        }
+        _loading = false;
+
+        if (_table != null) await _table.ReloadServerData();
+    }
+
+    private async Task OpenView(Book book)
+    {
+        var p = new DialogParameters<BookViewDialog> { { x => x.Book, book } };
+        await DialogService.ShowAsync<BookViewDialog>("Book Details", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+    }
+
+    private async Task OpenAdd()
+    {
+        var dlg = await DialogService.ShowAsync<BookFormDialog>("Add Book", new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            Snackbar.Add("Book added.", Severity.Success);
+            await Reload();
+        }
+    }
+
+    private async Task OpenEdit(Book book)
+    {
+        var p = new DialogParameters<BookFormDialog> { { x => x.ExistingBook, book } };
+        var dlg = await DialogService.ShowAsync<BookFormDialog>("Edit Book", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            Snackbar.Add("Book updated.", Severity.Success);
+            await Reload();
+        }
+    }
+
+    private async Task OpenDelete(Book book)
+    {
+        var p = new DialogParameters<ConfirmDialog> { { x => x.Message, $"Do you want to delete '{book.Title}'?" } };
+        var dlg = await DialogService.ShowAsync<ConfirmDialog>("Confirm Delete", p, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall });
+        var res = await dlg.Result;
+        if (res is { Canceled: false })
+        {
+            try
+            {
+                await BookService.DeleteBookAsync(book.Id);
+                Snackbar.Add("Book deleted.", Severity.Info);
+                await Reload();
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+            }
+        }
+    }
+
+    private static Color StatusColor(BookStatus status) => status switch
+    {
+        BookStatus.Overdue => Color.Error,
+        BookStatus.Returned => Color.Info,
+        BookStatus.Borrowed => Color.Warning,
+        _ => Color.Success
+    };
+}
