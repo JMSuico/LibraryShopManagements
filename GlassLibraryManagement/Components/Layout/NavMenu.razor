@@ -1,0 +1,141 @@
+@implements IDisposable
+@inject AuthenticationStateProvider AuthStateProvider
+
+<MudNavMenu Style="padding:8px 0;">
+    <MudText Typo="Typo.overline" Class="px-4 pt-3 pb-1"
+             Style="color:var(--text-accent-violet);font-weight:700;
+                    letter-spacing:.12em;font-size:.65rem;">
+        NAVIGATION
+    </MudText>
+
+    <MudNavLink Href="/home" Match="NavLinkMatch.All"
+                Icon="@Icons.Material.Filled.Home"
+                IconColor="Color.Primary">
+        Home
+    </MudNavLink>
+    <MudNavLink Href="/dashboard"
+                Icon="@Icons.Material.Filled.Dashboard"
+                IconColor="Color.Primary">
+        Dashboard
+    </MudNavLink>
+    @if (CanSeeCatalog)
+    {
+        <MudNavLink Href="/catalog"
+                    Icon="@Icons.Material.Filled.MenuBook"
+                    IconColor="Color.Primary">
+            Book Catalog
+        </MudNavLink>
+    }
+
+    @if (CanSeePatronHub)
+    {
+        <MudNavLink Href="/reservations"
+                    Icon="@Icons.Material.Filled.Bookmark"
+                    IconColor="Color.Primary">
+            Reservations
+        </MudNavLink>
+        <MudNavLink Href="/my-borrowings"
+                    Icon="@Icons.Material.Filled.Person"
+                    IconColor="Color.Primary">
+            My Borrowings
+        </MudNavLink>
+    }
+
+    @if (CanSeeStaffBorrowLogs)
+    {
+        <MudNavLink Href="/borrow"
+                    Icon="@Icons.Material.Filled.LibraryBooks"
+                    IconColor="Color.Primary">
+            Borrow Logs
+        </MudNavLink>
+        <MudNavLink Href="/return"
+                    Icon="@Icons.Material.Filled.History"
+                    IconColor="Color.Secondary">
+            Return Logs
+        </MudNavLink>
+    }
+
+    @if (CanAccessBorrowAndReturn)
+    {
+        <MudNavLink Href="/borrow-and-return"
+                    Icon="@Icons.Material.Filled.SwapHoriz"
+                    IconColor="Color.Primary">
+            Borrow and Return
+        </MudNavLink>
+    }
+
+    @if (CanManageBooks || CanManageUsers)
+    {
+        <MudDivider Class="my-2" Style="opacity:.4;" />
+        <MudText Typo="Typo.overline" Class="px-4 pb-1"
+                 Style="color:var(--text-accent-cyan);font-weight:700;
+                        letter-spacing:.12em;font-size:.65rem;">
+            MANAGEMENT
+        </MudText>
+    }
+
+    @if (CanManageUsers)
+    {
+        <MudNavLink Href="/users"
+                    Icon="@Icons.Material.Filled.People"
+                    IconColor="Color.Primary">
+            Users
+        </MudNavLink>
+    }
+
+    @if (CanManageBooks)
+    {
+        <MudNavLink Href="/books"
+                    Icon="@Icons.Material.Filled.AutoStories"
+                    IconColor="Color.Primary">
+            Books
+        </MudNavLink>
+    }
+
+    <MudDivider Class="my-2" Style="opacity:.4;" />
+    <MudText Typo="Typo.overline" Class="px-4 pb-1"
+             Style="color:var(--text-accent-violet);font-weight:700;
+                    letter-spacing:.12em;font-size:.65rem;">
+        ACCOUNT
+    </MudText>
+
+    <MudNavLink Href="/logout"
+                Icon="@Icons.Material.Filled.Logout"
+                IconColor="Color.Error">
+        Logout
+    </MudNavLink>
+</MudNavMenu>
+
+@code {
+    private RoleType? _role;
+
+    private bool CanSeeCatalog => _role is RoleType.Admin or RoleType.Librarian or RoleType.Student;
+    private bool CanSeePatronHub => _role is RoleType.Admin or RoleType.Librarian or RoleType.Student;
+    private bool CanSeeStaffBorrowLogs => _role is RoleType.Admin or RoleType.Librarian;
+    private bool CanAccessBorrowAndReturn => _role is RoleType.Admin or RoleType.Librarian;
+    private bool CanManageUsers => _role == RoleType.Admin;
+    private bool CanManageBooks => _role is RoleType.Admin or RoleType.Librarian;
+
+    protected override void OnInitialized()
+    {
+        RefreshRole();
+        AuthStateProvider.AuthenticationStateChanged += OnAuthenticationStateChanged;
+    }
+
+    public void Dispose()
+    {
+        AuthStateProvider.AuthenticationStateChanged -= OnAuthenticationStateChanged;
+    }
+
+    private void RefreshRole()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        _role = provider.CurrentUser?.Role;
+    }
+
+    private void OnAuthenticationStateChanged(Task<AuthenticationState> _)
+    {
+        RefreshRole();
+        InvokeAsync(StateHasChanged);
+    }
+}

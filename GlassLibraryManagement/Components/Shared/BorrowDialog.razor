@@ -1,0 +1,134 @@
+@inject IUserService UserService
+@inject IBorrowService BorrowService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ISnackbar Snackbar
+
+<MudDialog Style="min-width:440px;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+            <MudIcon Icon="@Icons.Material.Filled.LibraryAdd" Color="Color.Primary" />
+            <MudText Typo="Typo.h6" Color="Color.Primary" Style="font-weight:700;">Borrow Book</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        <MudStack Spacing="3">
+            <MudText Typo="Typo.h6">@Book.Title</MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">Author: @Book.Author</MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">Main ID: @Book.MainId</MudText>
+            <MudText Typo="Typo.body2" Color="Color.Secondary">Available Quantity: @Book.AvailableCopies</MudText>
+
+            @if (CanChooseBorrower)
+            {
+                <MudSelect T="int" Label="Borrow For" @bind-Value="_selectedUserId" Variant="Variant.Outlined">
+                    @foreach (var borrower in _borrowers)
+                    {
+                        <MudSelectItem Value="@borrower.Id">@borrower.FullName (@borrower.Role)</MudSelectItem>
+                    }
+                </MudSelect>
+            }
+            else if (_currentUser != null)
+            {
+                <MudAlert Severity="Severity.Info" Variant="Variant.Outlined">
+                    Borrower: @_currentUser.FullName (@_currentUser.Role)
+                </MudAlert>
+            }
+
+            <MudText Typo="Typo.subtitle2" Class="mt-2">Select Copies to Borrow:</MudText>
+            <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Selected: @_selectedCopies.Count / @_availableCopies.Count</MudText>
+                <MudButton Variant="Variant.Text" Color="Color.Primary" Size="Size.Small" OnClick="SelectAll">Select All</MudButton>
+            </MudStack>
+            <MudList T="QRCode" SelectionMode="SelectionMode.MultiSelection" @bind-SelectedValues="_selectedCopies" Dense="true" Class="mud-elevation-1 rounded pa-2" Style="max-height: 200px; overflow-y: auto;">
+                @foreach (var copy in _availableCopies)
+                {
+                    <MudListItem T="QRCode" Value="@copy">
+                        <MudText Typo="Typo.body2">@copy.CopyId</MudText>
+                    </MudListItem>
+                }
+            </MudList>
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit" Disabled="@(_saving || !_selectedCopies.Any())">
+            @if (_saving)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate />
+            }
+            else
+            {
+                <span>Verify & Borrow Books</span>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public Book Book { get; set; } = default!;
+
+    private User? _currentUser;
+    private List<User> _borrowers = [];
+    private int _selectedUserId;
+    private List<QRCode> _availableCopies = [];
+    private IReadOnlyCollection<QRCode> _selectedCopies = new HashSet<QRCode>();
+    private bool _saving;
+
+    private bool CanChooseBorrower => _currentUser?.Role is RoleType.Admin or RoleType.Librarian;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        _currentUser = provider.CurrentUser;
+        if (_currentUser == null)
+        {
+            return;
+        }
+
+        _availableCopies = Book.QRCodes?.Where(q => q.IsAvailable).ToList() ?? [];
+
+        if (CanChooseBorrower)
+        {
+            _borrowers = (await UserService.GetUsersAsync())
+                .Where(u => u.Role is RoleType.Librarian or RoleType.Student)
+                .OrderBy(u => u.FullName)
+                .ToList();
+            _selectedUserId = _borrowers.FirstOrDefault()?.Id ?? 0;
+        }
+        else
+        {
+            _selectedUserId = _currentUser.Id;
+        }
+    }
+
+    private void SelectAll()
+    {
+        _selectedCopies = new HashSet<QRCode>(_availableCopies);
+    }
+
+    private async Task Submit()
+    {
+        if (_selectedUserId <= 0)
+        {
+            Snackbar.Add("Select a borrower first.", Severity.Warning);
+            return;
+        }
+
+        _saving = true;
+        try
+        {
+            var verifiedBy = CanChooseBorrower ? _currentUser?.Id : null;
+            var qrCodeIds = _selectedCopies.Select(q => q.Id).ToList();
+            await BorrowService.BorrowAsync(Book.Id, _selectedUserId, qrCodeIds, DateHelper.DefaultBorrowDays, verifiedBy);
+            MudDialog.Close(DialogResult.Ok(true));
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+        finally
+        {
+            _saving = false;
+        }
+    }
+}

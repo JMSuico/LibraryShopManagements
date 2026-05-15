@@ -1,0 +1,106 @@
+@inject IUserService UserService
+@inject ISnackbar Snackbar
+
+<MudDialog Style="min-width:460px;max-height:90vh;overflow-y:auto;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+            <MudIcon Icon="@Icons.Material.Filled.Person" Color="Color.Primary" />
+            <MudText Typo="Typo.h6" Color="Color.Primary" Style="font-weight:700;">
+                @(ExistingUser == null ? "Add New User" : "Edit User")
+            </MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        <MudStack Spacing="3">
+            <MudTextField @bind-Value="_user.FirstName" Label="First Name" Variant="Variant.Outlined" />
+            <MudTextField @bind-Value="_user.LastName" Label="Last Name" Variant="Variant.Outlined" />
+            <MudTextField @bind-Value="_user.Address" Label="Address" Variant="Variant.Outlined" Lines="2" />
+            <MudSelect T="RoleType" Label="Account Type" @bind-Value="_user.Role" Variant="Variant.Outlined">
+                @foreach (RoleType role in Enum.GetValues(typeof(RoleType)))
+                {
+                    <MudSelectItem Value="role">@role</MudSelectItem>
+                }
+            </MudSelect>
+            <MudTextField @bind-Value="_user.Username" Label="Username" Variant="Variant.Outlined" />
+            <MudTextField @bind-Value="_user.Email" Label="Email" Variant="Variant.Outlined" InputType="InputType.Email" />
+            <MudTextField @bind-Value="_user.Password" Label="Password" Variant="Variant.Outlined"
+                          InputType="@(_showPwd ? InputType.Text : InputType.Password)"
+                          Adornment="Adornment.End"
+                          AdornmentIcon="@(_showPwd ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
+                          OnAdornmentClick="@(() => _showPwd = !_showPwd)" />
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Submit" Disabled="_saving">
+            @if (_saving)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate />
+            }
+            else
+            {
+                <span>@(ExistingUser == null ? "Add User" : "Save Changes")</span>
+            }
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public User? ExistingUser { get; set; }
+
+    private User _user = new() { Role = RoleType.Student };
+    private bool _showPwd;
+    private bool _saving;
+
+    protected override void OnInitialized()
+    {
+        if (ExistingUser != null)
+        {
+            _user = new User
+            {
+                Id = ExistingUser.Id,
+                Role = ExistingUser.Role,
+                FirstName = ExistingUser.FirstName,
+                LastName = ExistingUser.LastName,
+                Address = ExistingUser.Address,
+                Username = ExistingUser.Username,
+                Email = ExistingUser.Email,
+                Password = ExistingUser.Password,
+                ProfileImage = ExistingUser.ProfileImage
+            };
+        }
+    }
+
+    private async Task Submit()
+    {
+        if (string.IsNullOrWhiteSpace(_user.FirstName) || string.IsNullOrWhiteSpace(_user.Username))
+        {
+            Snackbar.Add("First name and username are required.", Severity.Warning);
+            return;
+        }
+
+        _saving = true;
+        try
+        {
+            if (ExistingUser == null)
+            {
+                await UserService.CreateUserAsync(_user);
+            }
+            else
+            {
+                await UserService.UpdateUserAsync(_user);
+            }
+
+            MudDialog.Close(DialogResult.Ok(_user));
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            _saving = false;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+@using GlassLibraryManagement.Features.Data.Models
+@using GlassLibraryManagement.Features.Data.Enums
+
+<MudDialog>
+    <DialogContent>
+        <MudTable Items="@Transactions" Dense="true" Hover="true" FixedHeader="true" Height="400px">
+            <HeaderContent>
+                <MudTh>Book</MudTh>
+                <MudTh>Borrower</MudTh>
+                <MudTh>Borrowed At</MudTh>
+                <MudTh>Due/Returned</MudTh>
+                <MudTh>Status</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@context.Book?.Title</MudTd>
+                <MudTd>@context.User?.FullName</MudTd>
+                <MudTd>@context.BorrowedAt.ToShortDateString()</MudTd>
+                <MudTd>
+                    @if (context.ReturnedAt.HasValue)
+                    {
+                        @context.ReturnedAt.Value.ToShortDateString()
+                    }
+                    else
+                    {
+                        @context.DueAt.ToShortDateString()
+                    }
+                </MudTd>
+                <MudTd>
+                    <MudChip T="string" Size="Size.Small" Color="@StatusColor(context.Status)">@context.Status</MudChip>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Close" Color="Color.Primary">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    
+    [Parameter] public List<BorrowTransaction> Transactions { get; set; } = new();
+
+    private void Close()
+    {
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+
+    private Color StatusColor(TransactionStatus status) => status switch
+    {
+        TransactionStatus.Returned => Color.Success,
+        TransactionStatus.Overdue => Color.Error,
+        _ => Color.Warning
+    };
+}

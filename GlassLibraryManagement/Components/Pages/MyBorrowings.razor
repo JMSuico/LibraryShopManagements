@@ -1,0 +1,115 @@
+@page "/my-borrowings"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Librarian,Student")]
+@inject IBorrowService BorrowService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ISnackbar Snackbar
+
+<PageTitle>My Borrowings - Glass Library Management</PageTitle>
+
+<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-5" Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.Person" Class="mr-2" Color="Color.Primary" />
+    My Borrowings
+</MudText>
+
+<MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+    Your overdue items, books currently on loan, and completed returns (most recent first).
+</MudText>
+
+<MudButtonGroup Variant="Variant.Outlined" Color="Color.Primary" Class="mb-4">
+    <MudButton Variant="@BtnVariant(FilterKind.All)" OnClick="@(() => SetFilter(FilterKind.All))">All</MudButton>
+    <MudButton Variant="@BtnVariant(FilterKind.Overdue)" Color="Color.Error" OnClick="@(() => SetFilter(FilterKind.Overdue))">Overdue</MudButton>
+    <MudButton Variant="@BtnVariant(FilterKind.OnLoan)" Color="Color.Warning" OnClick="@(() => SetFilter(FilterKind.OnLoan))">On loan</MudButton>
+    <MudButton Variant="@BtnVariant(FilterKind.Returned)" Color="Color.Success" OnClick="@(() => SetFilter(FilterKind.Returned))">Returned</MudButton>
+</MudButtonGroup>
+
+<MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
+    <MudTable Items="_displayed" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="12">
+        <HeaderContent>
+            <MudTh>Book</MudTh>
+            <MudTh>Borrowed</MudTh>
+            <MudTh>Due</MudTh>
+            <MudTh>Returned</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Fine</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@(context.Book?.Title ?? "Unknown")</MudTd>
+            <MudTd>@context.BorrowedAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</MudTd>
+            <MudTd>@context.DueAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</MudTd>
+            <MudTd>@(context.ReturnedAt?.ToLocalTime().ToString("MMM dd, yyyy HH:mm") ?? "—")</MudTd>
+            <MudTd>
+                <MudChip T="string" Size="Size.Small" Color="@StatusColor(context.Status)">@context.Status</MudChip>
+            </MudTd>
+            <MudTd>@context.FineAmount.ToString("F2")</MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText Typo="Typo.body2" Class="pa-4">Nothing in this view yet.</MudText>
+        </NoRecordsContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private enum FilterKind { All, Overdue, OnLoan, Returned }
+
+    private List<BorrowTransaction> _all = [];
+    private List<BorrowTransaction> _displayed = [];
+    private FilterKind _filter = FilterKind.All;
+    private int? _userId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        _userId = provider.CurrentUser?.Id;
+        await Reload();
+    }
+
+    private Variant BtnVariant(FilterKind f)
+        => _filter == f ? Variant.Filled : Variant.Outlined;
+
+    private void SetFilter(FilterKind f)
+    {
+        _filter = f;
+        RefreshDisplayed();
+    }
+
+    private void RefreshDisplayed()
+    {
+        _displayed = _filter switch
+        {
+            FilterKind.Overdue => _all.Where(t => t.ReturnedAt == null && t.Status == TransactionStatus.Overdue).ToList(),
+            FilterKind.OnLoan => _all.Where(t => t.ReturnedAt == null && t.Status == TransactionStatus.Borrowed).ToList(),
+            FilterKind.Returned => _all.Where(t => t.ReturnedAt != null).ToList(),
+            _ => _all.ToList()
+        };
+    }
+
+    private async Task Reload()
+    {
+        if (_userId is not int uid)
+        {
+            Snackbar.Add("Not signed in.", Severity.Warning);
+            return;
+        }
+
+        try
+        {
+            _all = (await BorrowService.GetMyBorrowingsAsync(uid)).ToList();
+            RefreshDisplayed();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load borrowings: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private static Color StatusColor(TransactionStatus status) => status switch
+    {
+        TransactionStatus.Returned => Color.Success,
+        TransactionStatus.Overdue => Color.Error,
+        _ => Color.Warning
+    };
+}

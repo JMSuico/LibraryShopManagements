@@ -1,0 +1,66 @@
+<MudDialog Style="min-width:400px;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+            <MudIcon Icon="@Icons.Material.Filled.AutoStories" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Style="font-weight:700;">Book Details</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        @if (Book != null)
+        {
+            <MudStack Spacing="2">
+                @if (!string.IsNullOrWhiteSpace(Book.CoverImage))
+                {
+                    <MudPaper Class="pa-2 d-inline-flex align-self-start" Outlined="true" Style="max-width:180px;">
+                        <MudImage Src="@Book.CoverImage" Alt="@Book.Title" Style="width:100%;border-radius:8px;" />
+                    </MudPaper>
+                }
+
+                <MudText Typo="Typo.h6" Color="Color.Default" Style="font-weight:700;">@Book.Title</MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary">by @Book.Author</MudText>
+                <MudDivider />
+                <MudText><strong>Main ID:</strong> @Book.MainId</MudText>
+                <MudText><strong>Total Copies:</strong> @Book.TotalCopies</MudText>
+                <MudText><strong>Available Copies:</strong> @Book.AvailableCopies</MudText>
+                <MudText><strong>Borrowed Copies:</strong> @Book.BorrowedCopies</MudText>
+                <MudText><strong>Reserved Copies:</strong> @Book.ReservedCopies</MudText>
+                <MudText><strong>Status:</strong> @Book.Status</MudText>
+                <MudDivider />
+                <MudText Typo="Typo.subtitle1" Style="font-weight:700;">Copy IDs</MudText>
+                @if (Book.QRCodes != null && Book.QRCodes.Any())
+                {
+                    <MudList T="string" Dense="true" Class="mud-elevation-1 rounded pa-2" Style="max-height: 150px; overflow-y: auto;">
+                        @foreach (var copy in Book.QRCodes.OrderBy(q => q.CopyId))
+                        {
+                            <MudListItem T="string">
+                                <MudText Typo="Typo.body2">
+                                    @copy.CopyId 
+                                    @if(copy.IsAvailable)
+                                    {
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Success">Available</MudChip>
+                                    }
+                                    else
+                                    {
+                                        <MudChip T="string" Size="Size.Small" Color="Color.Warning">Not Available</MudChip>
+                                    }
+                                </MudText>
+                            </MudListItem>
+                        }
+                    </MudList>
+                }
+                else
+                {
+                    <MudText Typo="Typo.body2" Color="Color.Secondary">No copies available.</MudText>
+                }
+            </MudStack>
+        }
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="@(() => MudDialog.Cancel())">Close</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public Book? Book { get; set; }
+}

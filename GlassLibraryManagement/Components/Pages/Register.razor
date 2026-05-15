@@ -1,0 +1,128 @@
+@page "/register"
+@layout EmptyLayout
+@inject IUserService UserService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+
+<PageTitle>Create Account - Glass Library Management</PageTitle>
+
+<MudPaper Elevation="0" Class="auth-card rounded-xl" Style="width:100%;max-width:460px;overflow:hidden;">
+    <div style="background:linear-gradient(135deg, rgba(139,92,246,.5) 0%, rgba(6,182,212,.3) 100%); padding:28px 32px 20px;">
+        <MudStack AlignItems="AlignItems.Center" Spacing="1">
+            <MudAvatar Style="background:var(--cosmic-violet-dim); border:2px solid var(--cosmic-violet); width:52px;height:52px;">
+                <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Style="color:var(--text-accent-violet);font-size:1.8rem;" />
+            </MudAvatar>
+            <MudText Typo="Typo.h5" Style="color:var(--text-heading);font-weight:700;">Create Account</MudText>
+            <MudText Typo="Typo.caption" Style="color:rgba(255,255,255,.7);">Step @_step of 2</MudText>
+        </MudStack>
+    </div>
+
+    @if (_step == 1)
+    {
+        <MudStack Spacing="3" Class="pa-6">
+            <MudTextField @bind-Value="_firstName" Label="First Name" Variant="Variant.Outlined" />
+            <MudTextField @bind-Value="_lastName" Label="Last Name" Variant="Variant.Outlined" />
+            <MudSelect T="RoleType" Label="Account Type" @bind-Value="_role" Variant="Variant.Outlined">
+                @foreach (RoleType role in Enum.GetValues(typeof(RoleType)))
+                {
+                    <MudSelectItem Value="role">@role</MudSelectItem>
+                }
+            </MudSelect>
+            <MudStack Row Spacing="2">
+                <MudButton FullWidth Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Navigation.NavigateTo("/login"))">Back to Login</MudButton>
+                <MudButton FullWidth Variant="Variant.Filled" Color="Color.Primary" OnClick="GoToStep2">Next</MudButton>
+            </MudStack>
+        </MudStack>
+    }
+    else
+    {
+        <MudStack Spacing="3" Class="pa-6">
+            <MudTextField @bind-Value="_username" Label="Username" Variant="Variant.Outlined" />
+            <MudTextField @bind-Value="_email" Label="Email" Variant="Variant.Outlined" InputType="InputType.Email" />
+            <MudTextField @bind-Value="_password" Label="Password" Variant="Variant.Outlined" InputType="@(_showPwd ? InputType.Text : InputType.Password)"
+                          Adornment="Adornment.End" AdornmentIcon="@(_showPwd ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
+                          OnAdornmentClick="@(() => _showPwd = !_showPwd)" />
+            <MudTextField @bind-Value="_confirmPwd" Label="Confirm Password" Variant="Variant.Outlined" InputType="@(_showConfirm ? InputType.Text : InputType.Password)"
+                          Adornment="Adornment.End" AdornmentIcon="@(_showConfirm ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
+                          OnAdornmentClick="@(() => _showConfirm = !_showConfirm)" />
+            <MudStack Row Spacing="2">
+                <MudButton FullWidth Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => _step = 1)">Previous</MudButton>
+                <MudButton FullWidth Variant="Variant.Filled" Color="Color.Primary" OnClick="HandleRegister" Disabled="_loading">
+                    @if (_loading)
+                    {
+                        <MudProgressCircular Size="Size.Small" Indeterminate Color="Color.Inherit" />
+                    }
+                    else
+                    {
+                        <span>Create Account</span>
+                    }
+                </MudButton>
+            </MudStack>
+        </MudStack>
+    }
+</MudPaper>
+
+@code {
+    private int _step = 1;
+    private bool _loading;
+    private bool _showPwd;
+    private bool _showConfirm;
+    private string _firstName = string.Empty;
+    private string _lastName = string.Empty;
+    private RoleType _role = RoleType.Student;
+    private string _username = string.Empty;
+    private string _email = string.Empty;
+    private string _password = string.Empty;
+    private string _confirmPwd = string.Empty;
+
+    private void GoToStep2()
+    {
+        if (string.IsNullOrWhiteSpace(_firstName) || string.IsNullOrWhiteSpace(_lastName))
+        {
+            Snackbar.Add("First and last name are required.", Severity.Warning);
+            return;
+        }
+
+        _step = 2;
+    }
+
+    private async Task HandleRegister()
+    {
+        if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
+        {
+            Snackbar.Add("Username and password are required.", Severity.Warning);
+            return;
+        }
+
+        if (_password != _confirmPwd)
+        {
+            Snackbar.Add("Passwords do not match.", Severity.Warning);
+            return;
+        }
+
+        _loading = true;
+        try
+        {
+            await UserService.CreateUserAsync(new User
+            {
+                Role = _role,
+                FirstName = _firstName,
+                LastName = _lastName,
+                Username = _username,
+                Email = _email,
+                Password = _password
+            });
+
+            Snackbar.Add("Account created! Please sign in.", Severity.Success);
+            Navigation.NavigateTo("/login");
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Error: {ex.Message}", Severity.Error);
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}

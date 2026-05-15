@@ -1,0 +1,127 @@
+@inject IReservationService ReservationService
+@inject ISnackbar Snackbar
+
+<MudDialog Class="book-catalog-reserve-dialog">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="2">
+            <MudIcon Icon="@Icons.Material.Filled.BookmarkAdd" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Style="font-weight:700;">Reserve copies</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        <MudPaper Elevation="12" Class="pa-5 rounded-xl"
+                  Style="max-width:400px;margin:0 auto;background:var(--mud-palette-surface);border:1px solid rgba(139,92,246,.25);">
+            <MudText Typo="Typo.subtitle1" Class="mb-1" Style="font-weight:700;">@Book.Title</MudText>
+            <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mb-4">@Book.Author · Main ID: @Book.MainId</MudText>
+
+            <MudText Typo="Typo.body2" Class="mb-3">How many copies do you want on hold?</MudText>
+
+            <MudStack Row AlignItems="AlignItems.Center" Justify="Justify.Center" Spacing="2" Class="mb-2">
+                <MudIconButton Icon="@Icons.Material.Filled.RemoveCircleOutline" Color="Color.Secondary" Size="Size.Large"
+                               Disabled="@(_quantity <= 1)" OnClick="Decrement" aria-label="Decrease quantity" />
+                <MudPaper Elevation="0" Class="px-6 py-3 rounded-xl" Outlined="true"
+                          Style="min-width:100px;text-align:center;background:var(--mud-palette-background);">
+                    <MudText Typo="Typo.h3" Style="font-weight:800;line-height:1;">@_quantity</MudText>
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">of @_maxQuantity max</MudText>
+                </MudPaper>
+                <MudIconButton Icon="@Icons.Material.Filled.AddCircleOutline" Color="Color.Primary" Size="Size.Large"
+                               Disabled="@(_quantity >= _maxQuantity)" OnClick="Increment" aria-label="Increase quantity" />
+            </MudStack>
+
+            <MudSlider T="int" @bind-Value="_quantity" Min="1" Max="@_maxQuantity" Step="1" Color="Color.Primary" Class="my-4"
+                       ValueLabel="true" />
+
+            <MudAlert Severity="Severity.Info" Variant="Variant.Outlined" Dense="true" Class="mt-2">
+                Available on shelf: <strong>@Book.Quantity</strong>
+                @if (_existingQty > 0)
+                {
+                    <span> · You already hold <strong>@_existingQty</strong> (you can raise or lower the total).</span>
+                }
+            </MudAlert>
+        </MudPaper>
+    </DialogContent>
+    <DialogActions>
+        <MudStack Row Justify="Justify.FlexEnd" Spacing="2" Class="px-2 pb-2">
+        <MudButton Variant="Variant.Text" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="SubmitAsync" Disabled="_saving">
+            @if (_saving)
+            {
+                <MudProgressCircular Size="Size.Small" Indeterminate="true" />
+            }
+            else
+            {
+                <span>Confirm reserve</span>
+            }
+        </MudButton>
+        </MudStack>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public Book Book { get; set; } = default!;
+    [Parameter] public int UserId { get; set; }
+
+    private int _quantity = 1;
+    private int _maxQuantity = 1;
+    private int _existingQty;
+    private bool _saving;
+
+    private int _lastBookId;
+    private bool _quantitiesLoaded;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Book is null || Book.Id <= 0 || UserId <= 0)
+        {
+            return;
+        }
+
+        if (_quantitiesLoaded && _lastBookId == Book.Id)
+        {
+            return;
+        }
+
+        _lastBookId = Book.Id;
+        var existing = await ReservationService.GetActiveReservationAsync(Book.Id, UserId);
+        _existingQty = existing?.Quantity ?? 0;
+        _maxQuantity = Math.Max(1, Book.TotalCopies);
+        _quantity = _existingQty > 0 ? _existingQty : 1;
+        _quantity = Math.Clamp(_quantity, 1, _maxQuantity);
+        _quantitiesLoaded = true;
+    }
+
+    private void Increment()
+    {
+        if (_quantity < _maxQuantity)
+        {
+            _quantity++;
+        }
+    }
+
+    private void Decrement()
+    {
+        if (_quantity > 1)
+        {
+            _quantity--;
+        }
+    }
+
+    private async Task SubmitAsync()
+    {
+        _saving = true;
+        try
+        {
+            await ReservationService.ReserveAsync(Book.Id, UserId, _quantity);
+            MudDialog.Close(DialogResult.Ok(_quantity));
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+        finally
+        {
+            _saving = false;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+@page "/return"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Librarian")]
+@inject IReturnService ReturnService
+@inject ISnackbar Snackbar
+
+<PageTitle>Return Logs - Glass Library Management</PageTitle>
+
+<MudText Typo="Typo.h5" Color="Color.Secondary" Class="mb-5" Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.History" Class="mr-2" Color="Color.Secondary" />
+    Return Logs
+</MudText>
+
+<MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+    Completed returns: who returned each book, when, final status, and any fine that was applied.
+</MudText>
+
+<MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
+    <MudTable Items="_transactions" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="15">
+        <HeaderContent>
+            <MudTh>Borrower</MudTh>
+            <MudTh>Book</MudTh>
+            <MudTh>Borrowed</MudTh>
+            <MudTh>Returned</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Fine</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@(context.User?.FullName ?? "Unknown")</MudTd>
+            <MudTd>@(context.Book?.Title ?? "Unknown")</MudTd>
+            <MudTd>@context.BorrowedAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</MudTd>
+            <MudTd>@(context.ReturnedAt?.ToLocalTime().ToString("MMM dd, yyyy HH:mm") ?? "-")</MudTd>
+            <MudTd>
+                <MudChip T="string" Size="Size.Small" Color="@StatusColor(context.Status)">@context.Status</MudChip>
+            </MudTd>
+            <MudTd>@context.FineAmount.ToString("F2")</MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText Typo="Typo.body2" Class="pa-4">No return records yet.</MudText>
+        </NoRecordsContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private List<BorrowTransaction> _transactions = [];
+
+    protected override async Task OnInitializedAsync() => await Reload();
+
+    private async Task Reload()
+    {
+        try
+        {
+            _transactions = (await ReturnService.GetReturnLogsAsync(null)).ToList();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load return logs: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private static Color StatusColor(TransactionStatus status) => status switch
+    {
+        TransactionStatus.Returned => Color.Success,
+        TransactionStatus.Overdue => Color.Error,
+        _ => Color.Warning
+    };
+}

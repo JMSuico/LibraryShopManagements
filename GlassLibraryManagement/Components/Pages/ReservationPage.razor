@@ -1,0 +1,185 @@
+@page "/reservations"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin,Librarian,Student")]
+@inject IReservationService ReservationService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<PageTitle>Reservations - Glass Library Management</PageTitle>
+
+<MudText Typo="Typo.h5" Color="Color.Primary" Class="mb-5" Style="font-weight:700;">
+    <MudIcon Icon="@Icons.Material.Filled.Bookmark" Class="mr-2" Color="Color.Primary" />
+    Reservations
+</MudText>
+
+<MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
+    @(_isStaff
+        ? "Patrons who reserved books and each reservation’s status. Patrons may cancel their own hold; staff may cancel any hold or verify a borrow (one copy at a time when quantity > 1)."
+        : "Your reserved books and their status. You can cancel an active hold before staff verifies the borrow.")
+</MudText>
+
+<MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
+    <MudTable Items="_rows" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="12">
+        <HeaderContent>
+            @if (_isStaff)
+            {
+                <MudTh>Patron</MudTh>
+            }
+            <MudTh>Book</MudTh>
+            <MudTh>Qty</MudTh>
+            <MudTh>Reserved</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh Style="min-width:220px;text-align:right;">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            @if (_isStaff)
+            {
+                <MudTd>@(context.User?.FullName ?? "Unknown")</MudTd>
+            }
+            <MudTd>@(context.Book?.Title ?? "Unknown")</MudTd>
+            <MudTd>@FormatQty(context)</MudTd>
+            <MudTd>@context.ReservedAt.ToLocalTime().ToString("MMM dd, yyyy HH:mm")</MudTd>
+            <MudTd>
+                <MudChip T="string" Size="Size.Small" Color="@ReservationColor(context.Status)">@context.Status</MudChip>
+            </MudTd>
+            <MudTd Style="text-align:right;">
+                @if (context.Status == ReservationStatus.Reserved && context.ReleasedAt == null && context.FulfilledAt == null && CanCancelReservation(context))
+                {
+                    <MudButton Variant="Variant.Outlined" Color="Color.Warning" Size="Size.Small" Class="mr-1"
+                               OnClick="@(() => CancelHoldAsync(context))">
+                        Cancel reservation
+                    </MudButton>
+                }
+                @if (_isStaff && context.Status == ReservationStatus.Reserved && context.ReleasedAt == null && context.FulfilledAt == null)
+                {
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small"
+                               OnClick="@(() => VerifyBorrowFromHoldAsync(context.Id))">
+                        Verify borrow@(context.Quantity > 1 ? $" (1 of {context.Quantity})" : "")
+                    </MudButton>
+                }
+                @if (!CanCancelReservation(context) && !(_isStaff && context.Status == ReservationStatus.Reserved && context.ReleasedAt == null && context.FulfilledAt == null))
+                {
+                    <MudText Typo="Typo.caption" Color="Color.Secondary">—</MudText>
+                }
+            </MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText Typo="Typo.body2" Class="pa-4">No reservations to show.</MudText>
+        </NoRecordsContent>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudPaper>
+
+@code {
+    private List<Reservation> _rows = [];
+    private bool _isStaff;
+    private int? _currentUserId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+        var user = provider.CurrentUser;
+        _currentUserId = user?.Id;
+        _isStaff = user?.Role is RoleType.Admin or RoleType.Librarian;
+        await Reload();
+    }
+
+    private bool CanCancelReservation(Reservation row)
+    {
+        if (row.Status != ReservationStatus.Reserved || row.ReleasedAt != null || row.FulfilledAt != null)
+        {
+            return false;
+        }
+
+        if (_isStaff)
+        {
+            return true;
+        }
+
+        return _currentUserId.HasValue && row.UserId == _currentUserId.Value;
+    }
+
+    private async Task Reload()
+    {
+        try
+        {
+            var filter = _isStaff ? null : _currentUserId;
+            _rows = (await ReservationService.GetReservationsAsync(filter)).ToList();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add($"Failed to load reservations: {ex.Message}", Severity.Error);
+        }
+    }
+
+    private async Task VerifyBorrowFromHoldAsync(int reservationId)
+    {
+        if (!_isStaff || !_currentUserId.HasValue)
+        {
+            Snackbar.Add("Only staff can verify a borrow from a hold.", Severity.Warning);
+            return;
+        }
+
+        try
+        {
+            await ReservationService.FulfillAsync(reservationId, DateHelper.DefaultBorrowDays, _currentUserId.Value);
+            Snackbar.Add("Hold verified and one copy checked out.", Severity.Success);
+            await Reload();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+
+    private async Task CancelHoldAsync(Reservation row)
+    {
+        var parameters = new DialogParameters<CancelReservationDialog>
+        {
+            { x => x.Reservation, row }
+        };
+
+        var dialog = await DialogService.ShowAsync<CancelReservationDialog>(
+            "Cancel reservation",
+            parameters,
+            new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+
+        var result = await dialog.Result;
+        if (result is null || result.Canceled)
+        {
+            return;
+        }
+
+        try
+        {
+            var cancelledQuantity = (int)result.Data;
+            await ReservationService.ReleaseAsync(row.Id, cancelledQuantity);
+            Snackbar.Add($"Reservation cancelled for {cancelledQuantity} copies.", Severity.Success);
+            await Reload();
+        }
+        catch (Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+
+    private static string FormatQty(Reservation r)
+    {
+        if (r.Status == ReservationStatus.Reserved && r.ReleasedAt == null && r.FulfilledAt == null)
+        {
+            return Math.Max(1, r.Quantity).ToString();
+        }
+
+        return "—";
+    }
+
+    private static Color ReservationColor(ReservationStatus status) => status switch
+    {
+        ReservationStatus.Fulfilled => Color.Success,
+        ReservationStatus.Released => Color.Default,
+        _ => Color.Primary
+    };
+}

@@ -1,0 +1,89 @@
+@page "/login"
+@layout EmptyLayout
+@inject IUserService UserService
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthStateProvider
+@inject ISnackbar Snackbar
+
+<PageTitle>Sign In - Glass Library Management</PageTitle>
+
+<MudPaper Elevation="0" Class="auth-card pa-8 rounded-xl" Style="width:100%;max-width:420px;">
+    <MudStack AlignItems="AlignItems.Center" Class="mb-6" Spacing="2">
+        <MudAvatar Style="background:var(--cosmic-violet-dim); border:2px solid var(--cosmic-violet); width:64px;height:64px;">
+            <MudIcon Icon="@Icons.Material.Filled.LocalLibrary" Style="color:var(--text-accent-violet);font-size:2rem;" />
+        </MudAvatar>
+        <MudText Typo="Typo.h5" Style="color:var(--text-heading);font-weight:700;letter-spacing:.03em;">
+            Glass Library Management
+        </MudText>
+        <MudText Typo="Typo.body2" Style="color:var(--text-muted);">Sign in to continue</MudText>
+    </MudStack>
+
+    <MudSelect T="RoleType" Label="Account Type" @bind-Value="_role" Variant="Variant.Outlined" Class="mb-4">
+        @foreach (RoleType role in Enum.GetValues(typeof(RoleType)))
+        {
+            <MudSelectItem Value="role">@role</MudSelectItem>
+        }
+    </MudSelect>
+
+    <MudTextField @bind-Value="_username" Label="Username" Variant="Variant.Outlined" Class="mb-4" />
+    <MudTextField @bind-Value="_password" Label="Password" Variant="Variant.Outlined" Class="mb-6"
+                  InputType="@(_showPwd ? InputType.Text : InputType.Password)"
+                  Adornment="Adornment.End"
+                  AdornmentIcon="@(_showPwd ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff)"
+                  OnAdornmentClick="@(() => _showPwd = !_showPwd)" />
+
+    <MudButton FullWidth Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" OnClick="HandleLogin" Disabled="_loading">
+        @if (_loading)
+        {
+            <MudProgressCircular Size="Size.Small" Indeterminate Color="Color.Inherit" />
+        }
+        else
+        {
+            <span>Sign In</span>
+        }
+    </MudButton>
+
+    <MudDivider Class="my-5" />
+
+    <MudText Typo="Typo.body2" Align="Align.Center" Style="color:var(--text-muted);">
+        Don't have an account?
+        <MudLink Href="/register" Style="color:var(--text-accent-violet);font-weight:600;">Click Here</MudLink>
+    </MudText>
+</MudPaper>
+
+@code {
+    private RoleType _role = RoleType.Student;
+    private string _username = string.Empty;
+    private string _password = string.Empty;
+    private bool _showPwd;
+    private bool _loading;
+
+    private async Task HandleLogin()
+    {
+        if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
+        {
+            Snackbar.Add("Please fill in all fields.", Severity.Warning);
+            return;
+        }
+
+        _loading = true;
+        try
+        {
+            var user = await UserService.AuthenticateAsync(_username, _password, _role);
+            if (user is null)
+            {
+                Snackbar.Add("Invalid credentials or account type.", Severity.Error);
+                return;
+            }
+
+            var provider = (AppAuthenticationStateProvider)AuthStateProvider;
+            provider.MarkUserAsAuthenticated(user);
+            Snackbar.Add($"Welcome back, {user.FirstName}!", Severity.Success);
+            Navigation.NavigateTo("/dashboard");
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}
