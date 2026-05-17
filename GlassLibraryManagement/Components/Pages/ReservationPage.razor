@@ -13,11 +13,20 @@
     Reservations
 </MudText>
 
-<MudText Typo="Typo.body2" Color="Color.Secondary" Class="mb-4">
-    @(_isStaff
-        ? "Patrons who reserved books and each reservation’s status. Patrons may cancel their own hold; staff may cancel any hold or verify a borrow (one copy at a time when quantity > 1)."
-        : "Your reserved books and their status. You can cancel an active hold before staff verifies the borrow.")
-</MudText>
+<div class="d-flex justify-space-between align-center mb-4">
+    <MudText Typo="Typo.body2" Color="Color.Secondary">
+        @(_isStaff
+            ? "Patrons who reserved books and each reservation’s status. Patrons may cancel their own hold; staff may cancel any hold or verify a borrow (one copy at a time when quantity > 1)."
+            : "Your reserved books and their status. You can cancel an active hold before staff verifies the borrow.")
+    </MudText>
+
+    @if (_isStaff)
+    {
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.LibraryBooks" OnClick="OpenBulkManageDialog">
+            Bulk Manage Reservations
+        </MudButton>
+    }
+</div>
 
 <MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
     <MudTable Items="_rows" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="12">
@@ -102,6 +111,36 @@
         return _currentUserId.HasValue && row.UserId == _currentUserId.Value;
     }
 
+    private async Task OpenBulkManageDialog()
+    {
+        if (!_isStaff || !_currentUserId.HasValue) return;
+
+        var activeReservations = _rows.Where(r => r.Status == ReservationStatus.Reserved && r.ReleasedAt == null && r.FulfilledAt == null).ToList();
+
+        if (!activeReservations.Any())
+        {
+            Snackbar.Add("No active reservations to manage.", Severity.Info);
+            return;
+        }
+
+        var parameters = new DialogParameters<BulkReservationDialog>
+        {
+            { x => x.Reservations, activeReservations },
+            { x => x.CurrentUserId, _currentUserId.Value }
+        };
+
+        var dialog = await DialogService.ShowAsync<BulkReservationDialog>(
+            "Bulk Manage Reservations",
+            parameters,
+            new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Medium, FullWidth = true });
+
+        var result = await dialog.Result;
+        if (result is not null && !result.Canceled)
+        {
+            await Reload();
+        }
+    }
+
     private async Task Reload()
     {
         try
@@ -155,10 +194,12 @@
 
         try
         {
-            var cancelledQuantity = (int)result.Data;
-            await ReservationService.ReleaseAsync(row.Id, cancelledQuantity);
-            Snackbar.Add($"Reservation cancelled for {cancelledQuantity} copies.", Severity.Success);
-            await Reload();
+            if (result.Data is int cancelledQuantity)
+            {
+                await ReservationService.ReleaseAsync(row.Id, cancelledQuantity);
+                Snackbar.Add($"Reservation cancelled for {cancelledQuantity} copies.", Severity.Success);
+                await Reload();
+            }
         }
         catch (Exception ex)
         {

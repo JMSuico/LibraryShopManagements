@@ -19,22 +19,22 @@ builder.Services.AddMudServices();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString,
-        new MySqlServerVersion(new Version(8, 0, 36))));
+        new MySqlServerVersion(new Version(8, 0, 36))), ServiceLifetime.Transient);
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IBookRepository, BookRepository>();
-builder.Services.AddScoped<IBorrowRepository, BorrowRepository>();
-builder.Services.AddScoped<IReturnRepository, ReturnRepository>();
-builder.Services.AddScoped<IBorrowAndReturnRepository, BorrowAndReturnRepository>();
-builder.Services.AddScoped<IReservationRepository, ReservationRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
+builder.Services.AddTransient<IBookRepository, BookRepository>();
+builder.Services.AddTransient<IBorrowRepository, BorrowRepository>();
+builder.Services.AddTransient<IReturnRepository, ReturnRepository>();
+builder.Services.AddTransient<IBorrowAndReturnRepository, BorrowAndReturnRepository>();
+builder.Services.AddTransient<IReservationRepository, ReservationRepository>();
 
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IBookService, BookService>();
-builder.Services.AddScoped<IBorrowService, BorrowService>();
-builder.Services.AddScoped<IReturnService, ReturnService>();
-builder.Services.AddScoped<IBorrowAndReturnService, BorrowAndReturnService>();
-builder.Services.AddScoped<IReservationService, ReservationService>();
-builder.Services.AddScoped<IThemeService, ThemeService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IBookService, BookService>();
+builder.Services.AddTransient<IBorrowService, BorrowService>();
+builder.Services.AddTransient<IReturnService, ReturnService>();
+builder.Services.AddTransient<IBorrowAndReturnService, BorrowAndReturnService>();
+builder.Services.AddTransient<IReservationService, ReservationService>();
+builder.Services.AddTransient<IThemeService, ThemeService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
