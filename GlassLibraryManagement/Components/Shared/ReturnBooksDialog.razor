@@ -1,0 +1,86 @@
+@using GlassLibraryManagement.Features.Data.Models
+@using GlassLibraryManagement.Features.Helpers
+@inject ISnackbar Snackbar
+
+<MudDialog Style="min-width:600px;">
+    <TitleContent>
+        <MudStack Row AlignItems="AlignItems.Center" Spacing="1">
+            <MudIcon Icon="@Icons.Material.Filled.AssignmentReturn" Color="Color.Secondary" />
+            <MudText Typo="Typo.h6" Color="Color.Secondary" Style="font-weight:700;">Return Books</MudText>
+        </MudStack>
+    </TitleContent>
+    <DialogContent>
+        <MudStack Spacing="3">
+            @if (_first != null)
+            {
+                <MudText Typo="Typo.h6">@(_first.Book?.Title ?? "Unknown book")</MudText>
+                <MudText Typo="Typo.body2" Color="Color.Secondary">Borrower: @(_first.User?.FullName ?? "Unknown")</MudText>
+            }
+
+            <MudText Typo="Typo.subtitle2" Class="mt-2">Select copies to return:</MudText>
+            <MudStack Row="true" AlignItems="AlignItems.Center" Justify="Justify.SpaceBetween">
+                <MudText Typo="Typo.caption" Color="Color.Secondary">Selected: @_selectedTransactions.Count / @Transactions.Count</MudText>
+                <MudButton Variant="Variant.Text" Color="Color.Secondary" Size="Size.Small" OnClick="SelectAll">Select All</MudButton>
+            </MudStack>
+
+            <MudTable Items="Transactions" Dense="true" Hover="true" Elevation="1" MultiSelection="true" @bind-SelectedItems="_selectedTransactions" Style="max-height: 300px; overflow-y: auto;">
+                <HeaderContent>
+                    <MudTh>Copy ID</MudTh>
+                    <MudTh>Borrowed</MudTh>
+                    <MudTh>Due</MudTh>
+                    <MudTh>Fine</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@(context.QRCode?.CopyId ?? "N/A")</MudTd>
+                    <MudTd>@context.BorrowedAt.ToLocalTime().ToString("MMM dd, yyyy")</MudTd>
+                    <MudTd>@context.DueAt.ToLocalTime().ToString("MMM dd, yyyy")</MudTd>
+                    <MudTd>
+                        @{
+                            var fine = FineHelper.CalculateFine(context.DueAt, DateHelper.UtcNow());
+                        }
+                        @if (fine > 0)
+                        {
+                            <MudText Color="Color.Error">@fine.ToString("C")</MudText>
+                        }
+                        else
+                        {
+                            <MudText Color="Color.Success">None</MudText>
+                        }
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Text" Color="Color.Default" OnClick="@(() => MudDialog.Cancel())">Cancel</MudButton>
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="Submit" Disabled="@(!_selectedTransactions.Any())">
+            Return Selected (@_selectedTransactions.Count)
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
+    
+    [Parameter] public List<BorrowTransaction> Transactions { get; set; } = new();
+
+    private HashSet<BorrowTransaction> _selectedTransactions = new();
+    private BorrowTransaction? _first => Transactions.FirstOrDefault();
+
+    private void SelectAll()
+    {
+        _selectedTransactions = new HashSet<BorrowTransaction>(Transactions);
+    }
+
+    private void Submit()
+    {
+        if (!_selectedTransactions.Any())
+        {
+            Snackbar.Add("Select at least one copy to return.", Severity.Warning);
+            return;
+        }
+
+        var returnedIds = _selectedTransactions.Select(t => t.Id).ToList();
+        MudDialog.Close(DialogResult.Ok(returnedIds));
+    }
+}

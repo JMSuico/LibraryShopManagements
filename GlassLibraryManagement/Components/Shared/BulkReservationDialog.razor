@@ -1,0 +1,100 @@
+@using GlassLibraryManagement.Features.Data.Models
+@using GlassLibraryManagement.Features.Data.Enums
+@using GlassLibraryManagement.Features.Services.Interfaces
+
+@inject IReservationService ReservationService
+@inject ISnackbar Snackbar
+@inject IDialogService DialogService
+
+<MudDialog>
+    <DialogContent>
+        <MudText Typo="Typo.body2" Class="mb-3">
+            Select reservations to bulk verify borrow or cancel. Only active reservations are shown.
+        </MudText>
+        <MudTable Items="Reservations" MultiSelection="true" @bind-SelectedItems="SelectedItems" Hover="true" Dense="true" Elevation="0" Height="400px" FixedHeader="true">
+            <HeaderContent>
+                <MudTh>Patron</MudTh>
+                <MudTh>Book</MudTh>
+                <MudTh>Qty</MudTh>
+                <MudTh>Reserved</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd>@(context.User?.FullName ?? "Unknown")</MudTd>
+                <MudTd>@(context.Book?.Title ?? "Unknown")</MudTd>
+                <MudTd>@context.Quantity</MudTd>
+                <MudTd>@context.ReservedAt.ToLocalTime().ToString("MMM dd, HH:mm")</MudTd>
+            </RowTemplate>
+            <NoRecordsContent>
+                <MudText Typo="Typo.body2">No active reservations available.</MudText>
+            </NoRecordsContent>
+        </MudTable>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel" Variant="Variant.Text">Close</MudButton>
+        <MudButton Color="Color.Warning" Variant="Variant.Filled" OnClick="CancelSelected" Disabled="!SelectedItems.Any()" Class="mr-2">Cancel Selected</MudButton>
+        <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="VerifySelected" Disabled="!SelectedItems.Any()">Verify Borrow Selected</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = null!;
+    
+    [Parameter] public List<Reservation> Reservations { get; set; } = new();
+    [Parameter] public int CurrentUserId { get; set; }
+
+    private HashSet<Reservation> SelectedItems { get; set; } = new();
+
+    private void Cancel() => MudDialog.Cancel();
+
+    private async Task VerifySelected()
+    {
+        int successCount = 0;
+
+        foreach (var item in SelectedItems)
+        {
+            try
+            {
+                // Verify borrow reduces ReservedCopies and increases BorrowedCopies, keeping AvailableCopies correct.
+                await ReservationService.FulfillAsync(item.Id, Features.Helpers.DateHelper.DefaultBorrowDays, CurrentUserId);
+                successCount++;
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add($"Error verifying {item.Book?.Title}: {ex.Message}", Severity.Error);
+            }
+        }
+
+        if (successCount > 0)
+        {
+            Snackbar.Add($"Successfully verified {successCount} borrow(s). Quantities in book catalog are properly updated.", Severity.Success);
+        }
+
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+
+    private async Task CancelSelected()
+    {
+        int successCount = 0;
+
+        foreach (var item in SelectedItems)
+        {
+            try
+            {
+                // Cancel reservation restores AvailableCopies by reducing ReservedCopies.
+                await ReservationService.ReleaseAsync(item.Id, null);
+                successCount++;
+            }
+            catch (Exception ex)
+            {
+                Snackbar.Add($"Error cancelling {item.Book?.Title}: {ex.Message}", Severity.Error);
+            }
+        }
+
+        if (successCount > 0)
+        {
+            Snackbar.Add($"Successfully cancelled {successCount} reservation(s). Quantities in book catalog are properly updated.", Severity.Success);
+        }
+
+        MudDialog.Close(DialogResult.Ok(true));
+    }
+}

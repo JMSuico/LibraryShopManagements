@@ -26,7 +26,7 @@
                 <MudText><strong>Reserved Copies:</strong> @Book.ReservedCopies</MudText>
                 <MudText><strong>Status:</strong> @Book.Status</MudText>
                 <MudDivider />
-                <MudText Typo="Typo.subtitle1" Style="font-weight:700;">Copy IDs</MudText>
+                <MudText Typo="Typo.subtitle1" Style="font-weight:700;">Copy IDs (Total: @Book.QRCodes.Count Matches Quantity)</MudText>
                 @if (Book.QRCodes != null && Book.QRCodes.Any())
                 {
                     <MudList T="string" Dense="true" Class="mud-elevation-1 rounded pa-2" Style="max-height: 150px; overflow-y: auto;">

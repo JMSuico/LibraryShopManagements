@@ -480,10 +480,19 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
-b i n /  
- o b j /  
- . v s /  
- . v s c o d e /  
- * . u s e r  
- a p p s e t t i n g s . D e v e l o p m e n t . j s o n  
+b i n / 
  
+ o b j / 
+ 
+ . v s / 
+ 
+ . v s c o d e / 
+ 
+ * . u s e r 
+ 
+ a p p s e t t i n g s . D e v e l o p m e n t . j s o n 
+ 
+ 
+
+# Mermaid files
+*.md

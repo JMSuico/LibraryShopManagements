@@ -20,6 +20,7 @@
 <MudPaper Elevation="3" Class="pa-4 rounded-xl overflow-hidden">
     <MudTable Items="_books" Dense Hover Breakpoint="Breakpoint.Sm" RowsPerPage="10">
         <HeaderContent>
+            <MudTh></MudTh>
             <MudTh>Main ID</MudTh>
             <MudTh>Title</MudTh>
             <MudTh>Author</MudTh>
@@ -28,6 +29,10 @@
             <MudTh Style="width:140px;text-align:right;">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
+            <MudTd>
+                <MudIconButton Icon="@(context.Id == _expandedBookId ? Icons.Material.Filled.ExpandLess : Icons.Material.Filled.ExpandMore)" 
+                               Color="Color.Primary" Size="Size.Small" OnClick="@(() => ToggleExpand(context.Id))" />
+            </MudTd>
             <MudTd>@context.MainId</MudTd>
             <MudTd>@context.Title</MudTd>
             <MudTd>@context.Author</MudTd>
@@ -44,6 +49,30 @@
                 </MudTooltip>
             </MudTd>
         </RowTemplate>
+        <ChildRowContent>
+            @if (context.Id == _expandedBookId)
+            {
+                <td colspan="7">
+                    <MudCard Elevation="0" Class="pa-4" Style="background-color: var(--mud-palette-background-grey);">
+                        <MudText Typo="Typo.subtitle2" Class="mb-2"><strong>Main ID:</strong> @context.MainId Copies</MudText>
+                        <MudTable Items="@context.QRCodes" Context="copyContext" Dense="true" Hover="true" Elevation="0" Style="background:transparent;">
+                            <HeaderContent>
+                                <MudTh>Copy ID</MudTh>
+                                <MudTh>Availability</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@copyContext.CopyId</MudTd>
+                                <MudTd>
+                                    <MudChip T="string" Size="Size.Small" Color="@(copyContext.IsAvailable ? Color.Success : Color.Warning)">
+                                        @(copyContext.IsAvailable ? "Available" : "Checked Out/Reserved")
+                                    </MudChip>
+                                </MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudCard>
+                </td>
+            }
+        </ChildRowContent>
         <PagerContent>
             <MudTablePager />
         </PagerContent>
@@ -53,6 +82,15 @@
 @code {
     private List<Book> _books = [];
     private User? _currentUser;
+    private int _expandedBookId = 0;
+
+    private void ToggleExpand(int bookId)
+    {
+        if (_expandedBookId == bookId)
+            _expandedBookId = 0;
+        else
+            _expandedBookId = bookId;
+    }
 
     protected override async Task OnInitializedAsync()
     {

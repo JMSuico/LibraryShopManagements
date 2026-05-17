@@ -24,49 +24,28 @@
 <MudTabs Elevation="4" Rounded="true" Color="Color.Primary" Centered="true" Class="mb-6">
     <MudTabPanel Text="Borrow" Icon="@Icons.Material.Filled.LibraryAdd">
         <MudGrid Spacing="4" Class="mt-2">
-            <MudItem xs="12" md="5">
-                <MudPaper Elevation="3" Class="pa-4 rounded-xl">
-                    <MudText Typo="Typo.h6" Class="mb-3">Direct borrow (quantity)</MudText>
-                    <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mb-3 d-block">
-                        For patrons without an active reservation: select account, title, and how many copies to check out at once (subject to limits and availability).
-                    </MudText>
-
-                    <MudAutocomplete T="User" Label="Patron account" @bind-Value="_directUser"
-                                     SearchFunc="@SearchUsers" ToStringFunc="@(u => u?.FullName ?? "")"
-                                     ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
-                                     Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" />
-
-                    <MudAutocomplete T="Book" Label="Book" @bind-Value="_directBook"
-                                     SearchFunc="@SearchBooks" ToStringFunc="@(b => b?.Title ?? "")"
-                                     ResetValueOnEmptyText="true" CoerceText="true" CoerceValue="true"
-                                     Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" />
-
-                    <MudNumericField T="int" Label="Quantity" @bind-Value="_directQuantity" Min="1"
-                                     Max="@(_directBook?.Quantity ?? 1)" Variant="Variant.Outlined" Margin="Margin.Dense" Class="mb-4" />
-
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="HandleDirectBorrowAsync"
-                               Disabled="@(_directBook == null || _directUser == null || _directQuantity < 1 || !_staffId.HasValue)">
-                        Confirm direct borrow
-                    </MudButton>
-                </MudPaper>
-            </MudItem>
-
-            <MudItem xs="12" md="7">
+            <MudItem xs="12">
                 <MudPaper Elevation="3" Class="pa-4 rounded-xl">
                     <MudText Typo="Typo.h6" Class="mb-3">Available books</MudText>
-                    <MudTable Items="_books" Dense="true" Hover="true" RowsPerPage="5">
+                    <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mb-3 d-block">
+                        Click 'Borrow' to open the borrowing modal and select specific copies.
+                    </MudText>
+                    <MudTable Items="_books" Dense="true" Hover="true" RowsPerPage="10">
+                        <ToolBarContent>
+                            <MudTextField @bind-Value="_searchBook" Placeholder="Search books..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" Immediate="true" />
+                        </ToolBarContent>
                         <HeaderContent>
                             <MudTh>Title</MudTh>
                             <MudTh>Author</MudTh>
-                            <MudTh>Qty</MudTh>
-                            <MudTh>Action</MudTh>
+                            <MudTh>Qty Available</MudTh>
+                            <MudTh></MudTh>
                         </HeaderContent>
                         <RowTemplate>
                             <MudTd>@context.Title</MudTd>
                             <MudTd>@context.Author</MudTd>
-                            <MudTd>@context.Quantity</MudTd>
-                            <MudTd>
-                                <MudButton Variant="Variant.Text" Color="Color.Primary" Size="Size.Small" OnClick="@(() => SelectBook(context))">Select</MudButton>
+                            <MudTd>@context.AvailableCopies</MudTd>
+                            <MudTd Style="text-align:right;">
+                                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick="@(() => OpenBorrowModalAsync(context))">Borrow</MudButton>
                             </MudTd>
                         </RowTemplate>
                         <PagerContent>
@@ -84,29 +63,29 @@
                 <MudPaper Elevation="3" Class="pa-4 rounded-xl">
                     <MudText Typo="Typo.h6" Class="mb-3">Checked-out items</MudText>
                     <MudText Typo="Typo.caption" Color="Color.Secondary" Class="mb-3 d-block">
-                        Everything listed here is still on loan. You can select specific copies to return.
+                        Everything listed here is still on loan. Click 'Return Books' to select specific copies to return.
                     </MudText>
-                    <MudTable Items="_activeTransactions" Dense="true" Hover="true" RowsPerPage="8" MultiSelection="true" @bind-SelectedItems="_selectedReturns">
+                    <MudTable Items="_groupedTransactions" Dense="true" Hover="true" RowsPerPage="8">
                         <HeaderContent>
                             <MudTh>Borrower</MudTh>
                             <MudTh>Book</MudTh>
-                            <MudTh>Copy ID</MudTh>
-                            <MudTh>Borrowed</MudTh>
+                            <MudTh>Copies Borrowed</MudTh>
+                            <MudTh></MudTh>
                         </HeaderContent>
                         <RowTemplate>
-                            <MudTd>@context.User?.FullName</MudTd>
-                            <MudTd>@context.Book?.Title</MudTd>
-                            <MudTd>@(context.QRCode?.CopyId ?? "N/A")</MudTd>
-                            <MudTd>@context.BorrowedAt.ToLocalTime().ToString("MMM dd, yyyy")</MudTd>
+                            <MudTd>@context.First().User?.FullName</MudTd>
+                            <MudTd>@context.First().Book?.Title</MudTd>
+                            <MudTd>@context.Count()</MudTd>
+                            <MudTd Style="text-align:right;">
+                                <MudButton Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Small" OnClick="@(() => OpenReturnModalAsync(context))">
+                                    Return Books
+                                </MudButton>
+                            </MudTd>
                         </RowTemplate>
                         <PagerContent>
                             <MudTablePager />
                         </PagerContent>
                     </MudTable>
-                    
-                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mt-4" OnClick="OpenBulkReturnConfirmAsync" Disabled="!_selectedReturns.Any()">
-                        Return Selected (@_selectedReturns.Count)
-                    </MudButton>
                 </MudPaper>
             </MudItem>
         </MudGrid>
@@ -117,12 +96,11 @@
     private List<Book> _books = [];
     private List<User> _users = [];
     private List<BorrowTransaction> _allTransactions = [];
-    private IEnumerable<BorrowTransaction> _activeTransactions => _allTransactions.Where(t => t.ReturnedAt == null);
-    private HashSet<BorrowTransaction> _selectedReturns = new();
+    private IEnumerable<IGrouping<(int UserId, int BookId), BorrowTransaction>> _groupedTransactions => 
+        _allTransactions.Where(t => t.ReturnedAt == null)
+                        .GroupBy(t => (t.UserId, t.BookId));
 
-    private Book? _directBook;
-    private User? _directUser;
-    private int _directQuantity = 1;
+    private string _searchBook = string.Empty;
     private int? _staffId;
 
     protected override async Task OnInitializedAsync()
@@ -158,85 +136,41 @@
         return Task.FromResult<IEnumerable<User>>(_users.Where(x => x.FullName.Contains(value, StringComparison.InvariantCultureIgnoreCase)));
     }
 
-    private void SelectBook(Book book)
+    private async Task OpenBorrowModalAsync(Book book)
     {
-        _directBook = book;
-    }
+        var parameters = new DialogParameters<BorrowDialog> { { x => x.Book, book } };
+        var dialog = await DialogService.ShowAsync<BorrowDialog>("Borrow Books", parameters, new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
 
-    private async Task HandleDirectBorrowAsync()
-    {
-        if (_directBook == null || _directUser == null || !_staffId.HasValue)
+        var result = await dialog.Result;
+        if (result is { Canceled: false })
         {
-            return;
-        }
-
-        try
-        {
-            var qrCodeIds = _directBook.QRCodes?
-                .Where(q => q.IsAvailable)
-                .Take(_directQuantity)
-                .Select(q => q.Id)
-                .ToList() ?? new List<int>();
-
-            await BorrowAndReturnService.DirectBorrowAsync(
-                _directBook.Id,
-                _directUser.Id,
-                qrCodeIds,
-                DateHelper.DefaultBorrowDays,
-                _staffId.Value);
-            Snackbar.Add("Direct borrow recorded.", Severity.Success);
-            _directBook = null;
-            _directUser = null;
-            _directQuantity = 1;
+            Snackbar.Add("Borrow recorded.", Severity.Success);
             await Reload();
         }
-        catch (Exception ex)
-        {
-            Snackbar.Add(ex.Message, Severity.Error);
-        }
     }
 
-    private async Task OpenBulkReturnConfirmAsync()
+    private async Task OpenReturnModalAsync(IGrouping<(int UserId, int BookId), BorrowTransaction> group)
     {
-        if (!_selectedReturns.Any()) return;
-
         try
         {
-            var firstItem = _selectedReturns.First();
-            var preview = await ReturnService.GetReturnPreviewAsync(firstItem.Id);
-            var proposed = DateHelper.UtcNow();
-            
-            // Note: Since we are allowing bulk returns across different books/users,
-            // we will pass the list of selected transaction IDs to the custom action
-            // and adapt the dialog slightly or just use it as a confirmation wrapper.
-            // For now, we'll reuse ReturnConfirmDialog but we might need a Bulk version.
-            
-            var parameters = new DialogParameters<ReturnConfirmDialog>
+            var parameters = new DialogParameters<ReturnBooksDialog>
             {
-                { x => x.Preview, preview }, // Just use the first one for preview details if needed
-                { x => x.ProposedReturnUtc, proposed },
-                { x => x.CustomReturnByTransactionIdAsync, new Func<int, Task>(async _ => 
-                    {
-                        foreach (var tx in _selectedReturns)
-                        {
-                            await BorrowAndReturnService.ReturnAsync(tx.Id);
-                        }
-                    }) 
-                },
-                { x => x.IsBulk, true },
-                { x => x.BulkCount, _selectedReturns.Count }
+                { x => x.Transactions, group.ToList() }
             };
 
-            var dialog = await DialogService.ShowAsync<ReturnConfirmDialog>(
-                "Confirm return",
+            var dialog = await DialogService.ShowAsync<ReturnBooksDialog>(
+                "Return Books",
                 parameters,
-                new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Small, FullWidth = true });
+                new DialogOptions { CloseButton = true, MaxWidth = MaxWidth.Medium, FullWidth = true });
 
             var result = await dialog.Result;
-            if (result is { Canceled: false })
+            if (result is { Canceled: false } && result.Data is List<int> returnedIds)
             {
-                Snackbar.Add($"Recorded return for {_selectedReturns.Count} items.", Severity.Success);
-                _selectedReturns.Clear();
+                foreach (var id in returnedIds)
+                {
+                    await BorrowAndReturnService.ReturnAsync(id);
+                }
+                Snackbar.Add($"Recorded return for {returnedIds.Count} items.", Severity.Success);
                 await Reload();
             }
         }

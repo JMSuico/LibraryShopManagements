@@ -11,8 +11,11 @@
         <MudStack Spacing="3">
             <MudText Typo="Typo.body1">How many copies of <strong>@Reservation.Book?.Title</strong> do you want to cancel?</MudText>
             
+        <MudStack Row="true" AlignItems="AlignItems.Center" Spacing="2">
             <MudNumericField T="int" @bind-Value="_cancelQuantity" Min="1" Max="@Reservation.Quantity" 
                              Label="Quantity to Cancel" Variant="Variant.Outlined" />
+            <MudButton Variant="Variant.Outlined" Color="Color.Warning" OnClick="CancelAll">Cancel All</MudButton>
+        </MudStack>
             
             <MudText Typo="Typo.body2" Color="Color.Secondary">
                 Remaining reservations after cancel: @(Reservation.Quantity - _cancelQuantity)
@@ -33,6 +36,11 @@
     private int _cancelQuantity;
     
     protected override void OnInitialized()
+    {
+        _cancelQuantity = Reservation.Quantity;
+    }
+
+    private void CancelAll()
     {
         _cancelQuantity = Reservation.Quantity;
     }
